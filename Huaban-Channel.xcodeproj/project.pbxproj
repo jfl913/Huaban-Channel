@@ -1,0 +1,512 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		010B85301AA1777F00373456 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 010B852F1AA1777F00373456 /* main.m */; };
+		010B85331AA1777F00373456 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 010B85321AA1777F00373456 /* AppDelegate.m */; };
+		010B85361AA1777F00373456 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 010B85351AA1777F00373456 /* ViewController.m */; };
+		010B85391AA1777F00373456 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 010B85371AA1777F00373456 /* Main.storyboard */; };
+		010B853B1AA1777F00373456 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 010B853A1AA1777F00373456 /* Images.xcassets */; };
+		010B853E1AA1777F00373456 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 010B853C1AA1777F00373456 /* LaunchScreen.xib */; };
+		010B854A1AA1778000373456 /* Huaban_ChannelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 010B85491AA1778000373456 /* Huaban_ChannelTests.m */; };
+		0149334B1AA408980048A388 /* HBChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0149334A1AA408980048A388 /* HBChannel.m */; };
+		38FD8AF841E5871E1C94C3E4 /* libPods-Huaban-Channel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 624AD661FEF6998F784E4A7E /* libPods-Huaban-Channel.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		010B85441AA1778000373456 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 010B85221AA1777F00373456 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 010B85291AA1777F00373456;
+			remoteInfo = "Huaban-Channel";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		010B852A1AA1777F00373456 /* Huaban-Channel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Huaban-Channel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		010B852E1AA1777F00373456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		010B852F1AA1777F00373456 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		010B85311AA1777F00373456 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		010B85321AA1777F00373456 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		010B85341AA1777F00373456 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		010B85351AA1777F00373456 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		010B85381AA1777F00373456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		010B853A1AA1777F00373456 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		010B853D1AA1777F00373456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		010B85431AA1778000373456 /* Huaban-ChannelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Huaban-ChannelTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		010B85481AA1778000373456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		010B85491AA1778000373456 /* Huaban_ChannelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Huaban_ChannelTests.m; sourceTree = "<group>"; };
+		014933491AA408980048A388 /* HBChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBChannel.h; sourceTree = "<group>"; };
+		0149334A1AA408980048A388 /* HBChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBChannel.m; sourceTree = "<group>"; };
+		459924764AFEF0922C2D4EE5 /* Pods-Huaban-Channel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Huaban-Channel.release.xcconfig"; path = "Pods/Target Support Files/Pods-Huaban-Channel/Pods-Huaban-Channel.release.xcconfig"; sourceTree = "<group>"; };
+		624AD661FEF6998F784E4A7E /* libPods-Huaban-Channel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Huaban-Channel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CE895522796D48A89FFF734 /* Pods-Huaban-Channel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Huaban-Channel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Huaban-Channel/Pods-Huaban-Channel.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		010B85271AA1777F00373456 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38FD8AF841E5871E1C94C3E4 /* libPods-Huaban-Channel.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		010B85401AA1778000373456 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		010B85211AA1777F00373456 = {
+			isa = PBXGroup;
+			children = (
+				010B852C1AA1777F00373456 /* Huaban-Channel */,
+				010B85461AA1778000373456 /* Huaban-ChannelTests */,
+				010B852B1AA1777F00373456 /* Products */,
+				DCE741373AC06975B4EFFA47 /* Pods */,
+				141B8679CB327CD41A4035B2 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		010B852B1AA1777F00373456 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				010B852A1AA1777F00373456 /* Huaban-Channel.app */,
+				010B85431AA1778000373456 /* Huaban-ChannelTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		010B852C1AA1777F00373456 /* Huaban-Channel */ = {
+			isa = PBXGroup;
+			children = (
+				010B85541AA1BA9900373456 /* DataModel */,
+				010B85531AA1AC9200373456 /* NetWork */,
+				010B85311AA1777F00373456 /* AppDelegate.h */,
+				010B85321AA1777F00373456 /* AppDelegate.m */,
+				010B85341AA1777F00373456 /* ViewController.h */,
+				010B85351AA1777F00373456 /* ViewController.m */,
+				010B85371AA1777F00373456 /* Main.storyboard */,
+				010B853A1AA1777F00373456 /* Images.xcassets */,
+				010B853C1AA1777F00373456 /* LaunchScreen.xib */,
+				010B852D1AA1777F00373456 /* Supporting Files */,
+			);
+			path = "Huaban-Channel";
+			sourceTree = "<group>";
+		};
+		010B852D1AA1777F00373456 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				010B852E1AA1777F00373456 /* Info.plist */,
+				010B852F1AA1777F00373456 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		010B85461AA1778000373456 /* Huaban-ChannelTests */ = {
+			isa = PBXGroup;
+			children = (
+				010B85491AA1778000373456 /* Huaban_ChannelTests.m */,
+				010B85471AA1778000373456 /* Supporting Files */,
+			);
+			path = "Huaban-ChannelTests";
+			sourceTree = "<group>";
+		};
+		010B85471AA1778000373456 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				010B85481AA1778000373456 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		010B85531AA1AC9200373456 /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = NetWork;
+			sourceTree = "<group>";
+		};
+		010B85541AA1BA9900373456 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				014933491AA408980048A388 /* HBChannel.h */,
+				0149334A1AA408980048A388 /* HBChannel.m */,
+			);
+			name = DataModel;
+			sourceTree = "<group>";
+		};
+		141B8679CB327CD41A4035B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				624AD661FEF6998F784E4A7E /* libPods-Huaban-Channel.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DCE741373AC06975B4EFFA47 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9CE895522796D48A89FFF734 /* Pods-Huaban-Channel.debug.xcconfig */,
+				459924764AFEF0922C2D4EE5 /* Pods-Huaban-Channel.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		010B85291AA1777F00373456 /* Huaban-Channel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 010B854D1AA1778000373456 /* Build configuration list for PBXNativeTarget "Huaban-Channel" */;
+			buildPhases = (
+				7B0F1EC177FC0F87BE7C0886 /* Check Pods Manifest.lock */,
+				010B85261AA1777F00373456 /* Sources */,
+				010B85271AA1777F00373456 /* Frameworks */,
+				010B85281AA1777F00373456 /* Resources */,
+				B6D7B3CAE304EB1BB0AADA60 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Huaban-Channel";
+			productName = "Huaban-Channel";
+			productReference = 010B852A1AA1777F00373456 /* Huaban-Channel.app */;
+			productType = "com.apple.product-type.application";
+		};
+		010B85421AA1778000373456 /* Huaban-ChannelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 010B85501AA1778000373456 /* Build configuration list for PBXNativeTarget "Huaban-ChannelTests" */;
+			buildPhases = (
+				010B853F1AA1778000373456 /* Sources */,
+				010B85401AA1778000373456 /* Frameworks */,
+				010B85411AA1778000373456 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				010B85451AA1778000373456 /* PBXTargetDependency */,
+			);
+			name = "Huaban-ChannelTests";
+			productName = "Huaban-ChannelTests";
+			productReference = 010B85431AA1778000373456 /* Huaban-ChannelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		010B85221AA1777F00373456 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = jfl913;
+				TargetAttributes = {
+					010B85291AA1777F00373456 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					010B85421AA1778000373456 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 010B85291AA1777F00373456;
+					};
+				};
+			};
+			buildConfigurationList = 010B85251AA1777F00373456 /* Build configuration list for PBXProject "Huaban-Channel" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 010B85211AA1777F00373456;
+			productRefGroup = 010B852B1AA1777F00373456 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				010B85291AA1777F00373456 /* Huaban-Channel */,
+				010B85421AA1778000373456 /* Huaban-ChannelTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		010B85281AA1777F00373456 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010B85391AA1777F00373456 /* Main.storyboard in Resources */,
+				010B853E1AA1777F00373456 /* LaunchScreen.xib in Resources */,
+				010B853B1AA1777F00373456 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		010B85411AA1778000373456 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7B0F1EC177FC0F87BE7C0886 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B6D7B3CAE304EB1BB0AADA60 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Huaban-Channel/Pods-Huaban-Channel-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		010B85261AA1777F00373456 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010B85361AA1777F00373456 /* ViewController.m in Sources */,
+				0149334B1AA408980048A388 /* HBChannel.m in Sources */,
+				010B85331AA1777F00373456 /* AppDelegate.m in Sources */,
+				010B85301AA1777F00373456 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		010B853F1AA1778000373456 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010B854A1AA1778000373456 /* Huaban_ChannelTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		010B85451AA1778000373456 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 010B85291AA1777F00373456 /* Huaban-Channel */;
+			targetProxy = 010B85441AA1778000373456 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		010B85371AA1777F00373456 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				010B85381AA1777F00373456 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		010B853C1AA1777F00373456 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				010B853D1AA1777F00373456 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		010B854B1AA1778000373456 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		010B854C1AA1778000373456 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		010B854E1AA1778000373456 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9CE895522796D48A89FFF734 /* Pods-Huaban-Channel.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Huaban-Channel/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		010B854F1AA1778000373456 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 459924764AFEF0922C2D4EE5 /* Pods-Huaban-Channel.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Huaban-Channel/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		010B85511AA1778000373456 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Huaban-ChannelTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Huaban-Channel.app/Huaban-Channel";
+			};
+			name = Debug;
+		};
+		010B85521AA1778000373456 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Huaban-ChannelTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Huaban-Channel.app/Huaban-Channel";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		010B85251AA1777F00373456 /* Build configuration list for PBXProject "Huaban-Channel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				010B854B1AA1778000373456 /* Debug */,
+				010B854C1AA1778000373456 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		010B854D1AA1778000373456 /* Build configuration list for PBXNativeTarget "Huaban-Channel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				010B854E1AA1778000373456 /* Debug */,
+				010B854F1AA1778000373456 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		010B85501AA1778000373456 /* Build configuration list for PBXNativeTarget "Huaban-ChannelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				010B85511AA1778000373456 /* Debug */,
+				010B85521AA1778000373456 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 010B85221AA1777F00373456 /* Project object */;
+}
