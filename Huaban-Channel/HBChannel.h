@@ -7,12 +7,13 @@
 //
 
 #import <Mantle/Mantle.h>
+#import "HBFile.h"
 
 @interface HBChannel : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic) NSInteger channelID;
 @property (nonatomic, copy) NSString *title;
-//@property (nonatomic) HBFile *icon;
+@property (nonatomic, strong) HBFile *icon;
 @property (nonatomic) NSInteger createdAt;
 @property (nonatomic) NSInteger itemCount;
 @property (nonatomic) NSInteger userCount;
@@ -21,6 +22,8 @@
 //@property (nonatomic) BOOL isFollowing;
 //@property (nonatomic) NSInteger badge;
 //@property (nonatomic) NSInteger seq;
+
+- (NSString *)iconURLForWidth:(NSInteger)width;
 
 
 @end

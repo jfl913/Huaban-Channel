@@ -22,5 +22,14 @@
              };
 }
 
++ (NSValueTransformer *)iconJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[HBFile class]];
+}
+
+- (NSString *)iconURLForWidth:(NSInteger)width
+{
+    return [NSString stringWithFormat:@"http://hb-topic-img.b0.upaiyun.com/%@_sq%ld", self.icon.key, (long)width];
+}
 
 @end

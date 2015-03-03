@@ -8,8 +8,12 @@
 
 #import "ViewController.h"
 #import "HBChannel.h"
+#import "JFHTTPSessionManager.h"
+#import "HBAPIManager.h"
 
 static NSString *API_SERVER = @"https://api.huaban.com";
+
+#define kHBChannelsPerPage 100
 
 @interface ViewController ()
 
@@ -20,27 +24,12 @@ static NSString *API_SERVER = @"https://api.huaban.com";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    NSMutableArray *dataArray = [NSMutableArray array];
-    
-    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
-    NSURL *baseURL = [NSURL URLWithString:API_SERVER];
-    NSURL *url = [NSURL URLWithString:@"mobile_topics/featured?limit=100" relativeToURL:baseURL];
-    NSURLSessionDataTask *sessionDataTask = [session
-                                             dataTaskWithURL:url
-                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                 if (!error) {
-                                                     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-                                                     NSArray *array = jsonObject[@"topics"];
-                                                     for (NSDictionary *dic in array) {
-                                                         HBChannel *channel = [MTLJSONAdapter modelOfClass:[HBChannel class] fromJSONDictionary:dic error:nil];
-                                                         [dataArray addObject:channel];
-                                                     }
-                                                     
-                                                     NSLog(@"channel: %@", dataArray);
-                                                 }
+    HBAPIManager *manager = [HBAPIManager sharedManager];
+    [manager fetchFeaturedChannelsWithOffset:NSNotFound limit:kHBChannelsPerPage success:^(id responseObject) {
+        NSLog(@"responseObject: %@", responseObject);
+    } failure:^(NSError *error) {
+        NSLog(@"error: %@", error);
     }];
-    [sessionDataTask resume];
 }
 
 - (void)didReceiveMemoryWarning {
