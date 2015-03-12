@@ -28,11 +28,16 @@ typedef void(^SDWebImageCompletionBlock)(UIImage *image, NSError *error, NSURL *
 {
     [self sd_cancelCurrentImageLoad];
     self.image = placeholder;
+    [self setNeedsLayout];
     if (url) {
         NSOperation *operation = [[JFWebImageDownloader sharedDownloader] downloadImageWithURL:url progress:^(NSInteger receivedSize, NSInteger expectedSize) {
             
         } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
-            self.image = image;
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                self.image = image;
+                [self setNeedsLayout];
+            });
+            
         }];
         [self sd_setImageLoadOperation:operation forKey:@"UIImageViewImageLoad"];
     }

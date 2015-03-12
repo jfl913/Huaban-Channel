@@ -55,6 +55,8 @@
     
     self.executing = YES;
     self.connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self startImmediately:NO];
+    
+    
     [self.connection start];
     if (self.connection) {
         if (self.progressBlock) {
@@ -72,6 +74,25 @@
             self.completedBlock(nil, nil, [NSError errorWithDomain:NSURLErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: @"Connection can't be initialized"}], YES);
         }
     }
+}
+
+- (void)cancel
+{
+    if (self.isFinished) {
+        return;
+    }
+    [super cancel];
+    if (self.connection) {
+        [self.connection cancel];
+        if (self.isExecuting) {
+            self.executing = NO;
+        }
+        if (!self.isFinished) {
+            self.finished = YES;
+        }
+        
+    }
+    [self reset];
 }
 
 - (void)setExecuting:(BOOL)executing
@@ -110,7 +131,7 @@
 {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     if (httpResponse.statusCode == 200) {
-        NSInteger expectedLength = response.expectedContentLength;
+        NSInteger expectedLength = response.expectedContentLength > 0 ? (NSInteger)response.expectedContentLength : 0;
         self.imageData = [[NSMutableData alloc] initWithCapacity:expectedLength];
     }
     
@@ -132,7 +153,6 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"error: %@", error);
     CFRunLoopStop(CFRunLoopGetCurrent());
     
     if (self.completedBlock) {
@@ -141,6 +161,5 @@
     
     [self done];
 }
-
 
 @end
