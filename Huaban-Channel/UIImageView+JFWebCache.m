@@ -32,7 +32,7 @@ typedef void(^SDWebImageCompletionBlock)(UIImage *image, NSError *error, NSURL *
         NSOperation *operation = [[JFWebImageDownloader sharedDownloader] downloadImageWithURL:url progress:^(NSInteger receivedSize, NSInteger expectedSize) {
             
         } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
-            
+            self.image = image;
         }];
         [self sd_setImageLoadOperation:operation forKey:@"UIImageViewImageLoad"];
     }

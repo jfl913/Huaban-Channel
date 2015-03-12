@@ -25,8 +25,6 @@
 
 - (void)awakeFromNib {
     // Initialization code
-//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-//    self.session = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:nil];
 }
 
 - (void)updateCell
@@ -34,18 +32,7 @@
     self.channelTitleLabel.text = self.channel.title;
     self.channelMetaLabel.text = [NSString stringWithFormat:@"%ld", (long)self.channel.itemCount];
     NSString *urlString = [self.channel iconURLForWidth:140];
-    NSLog(@"url: %@", urlString);
     [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:urlString]];
-//
-//    self.dataTask = [self.session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//        if (!error) {
-//            UIImage *image = [UIImage imageWithData:data];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                self.iconImageView.image = image;
-//            });
-//        }
-//    }];
-//    [self.dataTask resume];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

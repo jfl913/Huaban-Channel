@@ -53,7 +53,7 @@
     JFWebImageDownloaderOperation *operation = [[JFWebImageDownloaderOperation alloc] initWithRequest:request progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         
     } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
-        
+        completedBlock(image, data, error, finished);
     } cancelled:^{
         
     }];

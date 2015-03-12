@@ -8,7 +8,7 @@
 
 #import "JFWebImageDownloaderOperation.h"
 
-@interface JFWebImageDownloaderOperation ()
+@interface JFWebImageDownloaderOperation () <NSURLConnectionDataDelegate>
 
 @property (copy, nonatomic) SDWebImageDownloaderProgressBlock progressBlock;
 @property (copy, nonatomic) SDWebImageDownloaderCompletedBlock completedBlock;
@@ -97,16 +97,6 @@
     self.imageData = nil;
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    CFRunLoopStop(CFRunLoopGetCurrent());
-    
-    if (self.completedBlock) {
-        self.completedBlock(nil, nil, error, YES);
-    }
-    
-    [self done];
-}
-
 - (void)done
 {
     self.finished = YES;
@@ -118,12 +108,38 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-    NSLog(@"response: %@", response);
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+    if (httpResponse.statusCode == 200) {
+        NSInteger expectedLength = response.expectedContentLength;
+        self.imageData = [[NSMutableData alloc] initWithCapacity:expectedLength];
+    }
+    
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    NSLog(@"data: %@", data);
+    [self.imageData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    CFRunLoopStop(CFRunLoopGetCurrent());
+    UIImage *image = [UIImage imageWithData:self.imageData];
+    if (self.completedBlock) {
+        self.completedBlock(image, self.imageData, nil, YES);
+    }
+    [self done];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"error: %@", error);
+    CFRunLoopStop(CFRunLoopGetCurrent());
+    
+    if (self.completedBlock) {
+        self.completedBlock(nil, nil, error, YES);
+    }
+    
+    [self done];
 }
 
 
