@@ -8,6 +8,7 @@
 
 #import "JFWebImageDownloader.h"
 #import "JFWebImageDownloaderOperation.h"
+#import "JFImageCache.h"
 
 @interface JFWebImageDownloader ()
 
@@ -54,6 +55,7 @@
         
     } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
         completedBlock(image, data, error, finished);
+        [[JFImageCache sharedImageCache] storeImage:image recalculateFromImage:NO imageData:data forKey:[url absoluteString] toDisk:YES];
     } cancelled:^{
         
     }];
