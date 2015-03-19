@@ -72,6 +72,7 @@
 		01A23F411AB047F400956E95 /* JFWebImageDownloaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWebImageDownloaderOperation.m; sourceTree = "<group>"; };
 		01E9B95B1AA48521000FE7D5 /* HBAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBAPIManager.h; sourceTree = "<group>"; };
 		01E9B95C1AA48521000FE7D5 /* HBAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBAPIManager.m; sourceTree = "<group>"; };
+		01F8E15F1ABAD6F1004BF0DF /* JFWebImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWebImageOperation.h; sourceTree = "<group>"; };
 		459924764AFEF0922C2D4EE5 /* Pods-Huaban-Channel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Huaban-Channel.release.xcconfig"; path = "Pods/Target Support Files/Pods-Huaban-Channel/Pods-Huaban-Channel.release.xcconfig"; sourceTree = "<group>"; };
 		624AD661FEF6998F784E4A7E /* libPods-Huaban-Channel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Huaban-Channel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE895522796D48A89FFF734 /* Pods-Huaban-Channel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Huaban-Channel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Huaban-Channel/Pods-Huaban-Channel.debug.xcconfig"; sourceTree = "<group>"; };
@@ -198,6 +199,7 @@
 				01A23F411AB047F400956E95 /* JFWebImageDownloaderOperation.m */,
 				0175A0E91AA83B5400DDA2A0 /* UIImageView+JFWebCache.h */,
 				0175A0EA1AA83B5400DDA2A0 /* UIImageView+JFWebCache.m */,
+				01F8E15F1ABAD6F1004BF0DF /* JFWebImageOperation.h */,
 			);
 			name = JFWebImage;
 			sourceTree = "<group>";

@@ -8,16 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "JFWebImageOperation.h"
 
-typedef void(^SDWebImageDownloaderProgressBlock)(NSInteger receivedSize, NSInteger expectedSize);
-typedef void(^SDWebImageDownloaderCompletedBlock)(UIImage *image, NSData *data, NSError *error, BOOL finished);
+typedef void(^JFWebImageDownloaderProgressBlock)(NSInteger receivedSize, NSInteger expectedSize);
+typedef void(^JFWebImageDownloaderCompletedBlock)(UIImage *image, NSData *data, NSError *error, BOOL finished);
 
 @interface JFWebImageDownloader : NSObject
 
 + (instancetype)sharedDownloader;
 
-- (NSOperation *)downloadImageWithURL:(NSURL *)url
-                            progress:(SDWebImageDownloaderProgressBlock)progressBlock
-                           completed:(SDWebImageDownloaderCompletedBlock)completedBlock;
+- (id <JFWebImageOperation>)downloadImageWithURL:(NSURL *)url
+                            progress:(JFWebImageDownloaderProgressBlock)progressBlock
+                           completed:(JFWebImageDownloaderCompletedBlock)completedBlock;
 
 @end

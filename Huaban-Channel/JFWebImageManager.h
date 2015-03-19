@@ -7,12 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JFImageCache.h"
+#import "JFWebImageDownloader.h"
+
+typedef void(^JFWebImageCompletionWithFinishedBlock)(UIImage *image, NSError *error, JFImageCacheType cacheType, BOOL finished, NSURL *imageURL);
 
 @interface JFWebImageManager : NSObject
 
-@property (nonatomic, strong) NSURLSession *session;
-@property (nonatomic, strong) NSURLSessionDataTask *dataTask;
+@property (nonatomic, strong) JFImageCache *imageCache;
+@property (nonatomic, strong) JFWebImageDownloader *imageDownloader;
 
 + (instancetype)sharedManager;
+
+- (id <JFWebImageOperation>)downloadImageWithURL:(NSURL *)url
+                             progress:(JFWebImageDownloaderProgressBlock)progressBlock
+                            completed:(JFWebImageCompletionWithFinishedBlock)completedBlock;
 
 @end

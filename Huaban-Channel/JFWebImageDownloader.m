@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSOperationQueue *downloadQueue;
 @property (nonatomic, strong) NSMutableDictionary *httpHeaders;
 @property (nonatomic) NSTimeInterval downloadTimeout;
+@property (nonatomic, strong) JFImageCache *imageCache;
 
 @end
 
@@ -38,14 +39,15 @@
         self.downloadQueue.maxConcurrentOperationCount = 2;
         self.httpHeaders = [NSMutableDictionary dictionaryWithObject:@"image/webp,image/*;q=0.8" forKey:@"Accept"];
         self.downloadTimeout = 15.0;
+        self.imageCache = [JFImageCache sharedImageCache];
         
     }
     return self;
 }
 
-- (NSOperation *)downloadImageWithURL:(NSURL *)url
-                            progress:(SDWebImageDownloaderProgressBlock)progressBlock
-                           completed:(SDWebImageDownloaderCompletedBlock)completedBlock
+- (id <JFWebImageOperation>)downloadImageWithURL:(NSURL *)url
+                            progress:(JFWebImageDownloaderProgressBlock)progressBlock
+                           completed:(JFWebImageDownloaderCompletedBlock)completedBlock
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:self.downloadTimeout];
     request.HTTPShouldUsePipelining = YES;
@@ -55,7 +57,6 @@
         
     } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
         completedBlock(image, data, error, finished);
-        [[JFImageCache sharedImageCache] storeImage:image recalculateFromImage:NO imageData:data forKey:[url absoluteString] toDisk:YES];
     } cancelled:^{
         
     }];

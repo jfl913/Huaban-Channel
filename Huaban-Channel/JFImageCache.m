@@ -111,5 +111,68 @@
     return fileName;
 }
 
+- (NSOperation *)queryDiskCacheForKey:(NSString *)key done:(JFWebImageQueryCompletedBlock)doneBlock
+{
+    if (!doneBlock) {
+        return nil;
+    }
+    
+    if (!key) {
+        doneBlock(nil, JFImageCacheTypeNone);
+        return nil;
+    }
+    
+    UIImage *image = [self imageFromMemoryCacheForKey:key];
+    if (image) {
+        doneBlock(image, JFImageCacheTypeMemory);
+        return nil;
+    }
+    
+    NSOperation *operation = [NSOperation new];
+    dispatch_async(self.ioQueue, ^{
+        if (operation.isCancelled) {
+            return;
+        }
+        
+        UIImage *diskImage = [self diskImageForKey:key];
+        if (diskImage) {
+            [self.memCache setObject:diskImage forKey:key cost:diskImage.size.width * diskImage.size.height *diskImage.scale];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            doneBlock(diskImage, JFImageCacheTypeDisk);
+        });
+    });
+    
+    return operation;
+}
+
+- (UIImage *)imageFromMemoryCacheForKey:(NSString *)key
+{
+    return [self.memCache objectForKey:key];
+}
+
+- (UIImage *)imageFromDiskCacheForKey:(NSString *)key
+{
+    UIImage *image = [self imageFromMemoryCacheForKey:key];
+    if (image) {
+        return image;
+    }
+    
+    UIImage *diskImage = [self diskImageForKey:key];
+    if (diskImage) {
+        [self.memCache setObject:diskImage forKey:key cost:(diskImage.size.width * diskImage.size.height * diskImage.scale)];
+    }
+    return diskImage;
+    
+}
+
+- (UIImage *)diskImageForKey:(NSString *)key
+{
+    NSString *defaultPath = [self defaultCachePathForKey:key];
+    NSData *data = [NSData dataWithContentsOfFile:defaultPath];
+    return [UIImage imageWithData:data];
+}
+
 
 @end

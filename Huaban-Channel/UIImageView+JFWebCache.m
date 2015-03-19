@@ -13,8 +13,18 @@
 
 static char loadOperationKey;
 
-typedef void(^SDWebImageDownloaderProgressBlock)(NSInteger receivedSize, NSInteger expectedSize);
-typedef void(^SDWebImageCompletionBlock)(UIImage *image, NSError *error, NSURL *imageURL);
+
+//如果本身在主线程，再获得主线程会出错
+#define dispatch_main_sync_safe(block)\
+if ([NSThread isMainThread]) {\
+block();\
+} else {\
+dispatch_sync(dispatch_get_main_queue(), block);\
+}
+
+
+typedef void(^JFWebImageDownloaderProgressBlock)(NSInteger receivedSize, NSInteger expectedSize);
+typedef void(^JFWebImageCompletionBlock)(UIImage *image, NSError *error, NSURL *imageURL);
 
 
 @implementation UIImageView (JFWebCache)
@@ -24,21 +34,22 @@ typedef void(^SDWebImageCompletionBlock)(UIImage *image, NSError *error, NSURL *
     [self sd_setImageWithURL:url placeholderImage:nil progress:nil completed:nil];
 }
 
-- (void)sd_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDWebImageCompletionBlock)completedBlock
+- (void)sd_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder progress:(JFWebImageDownloaderProgressBlock)progressBlock completed:(JFWebImageCompletionBlock)completedBlock
 {
     [self sd_cancelCurrentImageLoad];
     self.image = placeholder;
     [self setNeedsLayout];
     if (url) {
-        NSOperation *operation = [[JFWebImageDownloader sharedDownloader] downloadImageWithURL:url progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        NSOperation *operation = [[JFWebImageManager sharedManager] downloadImageWithURL:url progress:^(NSInteger receivedSize, NSInteger expectedSize) {
             
-        } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
-            dispatch_sync(dispatch_get_main_queue(), ^{
+        } completed:^(UIImage *image, NSError *error, JFImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            dispatch_main_sync_safe(^{
                 self.image = image;
                 [self setNeedsLayout];
             });
-            
+
         }];
+        
         [self sd_setImageLoadOperation:operation forKey:@"UIImageViewImageLoad"];
     }
 

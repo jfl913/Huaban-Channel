@@ -10,8 +10,8 @@
 
 @interface JFWebImageDownloaderOperation () <NSURLConnectionDataDelegate>
 
-@property (copy, nonatomic) SDWebImageDownloaderProgressBlock progressBlock;
-@property (copy, nonatomic) SDWebImageDownloaderCompletedBlock completedBlock;
+@property (copy, nonatomic) JFWebImageDownloaderProgressBlock progressBlock;
+@property (copy, nonatomic) JFWebImageDownloaderCompletedBlock completedBlock;
 @property (copy, nonatomic) SDWebImageNoParamsBlock cancelBlock;
 
 @property (nonatomic, strong) NSURLRequest *request;
@@ -29,8 +29,8 @@
 @synthesize finished = _finished;
 
 - (instancetype)initWithRequest:(NSURLRequest *)request
-             progress:(SDWebImageDownloaderProgressBlock)progressBlock
-            completed:(SDWebImageDownloaderCompletedBlock)completedBlock
+             progress:(JFWebImageDownloaderProgressBlock)progressBlock
+            completed:(JFWebImageDownloaderCompletedBlock)completedBlock
             cancelled:(SDWebImageNoParamsBlock)cancelBlock
 {
     self = [super init];

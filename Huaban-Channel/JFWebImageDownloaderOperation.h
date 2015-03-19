@@ -8,14 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "JFWebImageDownloader.h"
+#import "JFWebImageOperation.h"
 
 typedef void(^SDWebImageNoParamsBlock)();
 
-@interface JFWebImageDownloaderOperation : NSOperation
+@interface JFWebImageDownloaderOperation : NSOperation <JFWebImageOperation>
 
 - (instancetype)initWithRequest:(NSURLRequest *)request
-             progress:(SDWebImageDownloaderProgressBlock)progressBlock
-            completed:(SDWebImageDownloaderCompletedBlock)completedBlock
+             progress:(JFWebImageDownloaderProgressBlock)progressBlock
+            completed:(JFWebImageDownloaderCompletedBlock)completedBlock
             cancelled:(SDWebImageNoParamsBlock)cancelBlock;
 
 @end
