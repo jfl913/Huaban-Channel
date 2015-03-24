@@ -7,25 +7,10 @@
 //
 
 #import "UIImageView+JFWebCache.h"
-#import "JFWebImageManager.h"
-#import "JFWebImageDownloader.h"
+#import "JFWebImageMacro.h"
 #import <objc/runtime.h>
 
 static char loadOperationKey;
-
-
-//如果本身在主线程，再获得主线程会出错
-#define dispatch_main_sync_safe(block)\
-if ([NSThread isMainThread]) {\
-block();\
-} else {\
-dispatch_sync(dispatch_get_main_queue(), block);\
-}
-
-
-typedef void(^JFWebImageDownloaderProgressBlock)(NSInteger receivedSize, NSInteger expectedSize);
-typedef void(^JFWebImageCompletionBlock)(UIImage *image, NSError *error, NSURL *imageURL);
-
 
 @implementation UIImageView (JFWebCache)
 
@@ -38,19 +23,32 @@ typedef void(^JFWebImageCompletionBlock)(UIImage *image, NSError *error, NSURL *
 {
     [self sd_cancelCurrentImageLoad];
     self.image = placeholder;
-    [self setNeedsLayout];
     if (url) {
-        NSOperation *operation = [[JFWebImageManager sharedManager] downloadImageWithURL:url progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-            
-        } completed:^(UIImage *image, NSError *error, JFImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        id <JFWebImageOperation> operation = [[JFWebImageManager sharedManager] downloadImageWithURL:url progress:progressBlock completed:^(UIImage *image, NSError *error, JFImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             dispatch_main_sync_safe(^{
-                self.image = image;
-                [self setNeedsLayout];
+                if (image) {
+                    self.image = image;
+                    [self setNeedsLayout];
+                }
+                
+                if (completedBlock && finished) {
+                    completedBlock(image, error, cacheType, url);
+                }
+                
             });
 
         }];
         
         [self sd_setImageLoadOperation:operation forKey:@"UIImageViewImageLoad"];
+        
+    }else{
+        dispatch_main_async_safe(^{
+            NSError *error = [NSError errorWithDomain:@"JFWebImageErrorDomain" code:-1 userInfo:@{NSLocalizedDescriptionKey : @"url is nil"}];
+            if (completedBlock) {
+                completedBlock(nil, error, JFImageCacheTypeNone, url);
+            }
+
+        });
     }
 
 }
@@ -63,9 +61,9 @@ typedef void(^JFWebImageCompletionBlock)(UIImage *image, NSError *error, NSURL *
 - (void)sd_cancelImageLoadOperationWithKey:(NSString *)key
 {
     NSMutableDictionary *operationDictionary = [self operationDictionary];
-    NSOperation *operation = operationDictionary[key];
-    if (operation) {
-        [operation cancel];
+    id operation = operationDictionary[key];
+    if ([operation conformsToProtocol:@protocol(JFWebImageOperation)]) {
+        [(id <JFWebImageOperation>) operation cancel];
     }
     [operationDictionary removeObjectForKey:key];
 }

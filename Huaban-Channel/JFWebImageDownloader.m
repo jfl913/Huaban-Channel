@@ -36,7 +36,7 @@
     self = [super init];
     if (self) {
         self.downloadQueue = [[NSOperationQueue alloc] init];
-        self.downloadQueue.maxConcurrentOperationCount = 2;
+        self.downloadQueue.maxConcurrentOperationCount = 6;
         self.httpHeaders = [NSMutableDictionary dictionaryWithObject:@"image/webp,image/*;q=0.8" forKey:@"Accept"];
         self.downloadTimeout = 15.0;
         self.imageCache = [JFImageCache sharedImageCache];
@@ -53,9 +53,7 @@
     request.HTTPShouldUsePipelining = YES;
     request.allHTTPHeaderFields = self.httpHeaders;
     
-    JFWebImageDownloaderOperation *operation = [[JFWebImageDownloaderOperation alloc] initWithRequest:request progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-        
-    } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+    JFWebImageDownloaderOperation *operation = [[JFWebImageDownloaderOperation alloc] initWithRequest:request progress:progressBlock completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
         completedBlock(image, data, error, finished);
     } cancelled:^{
         

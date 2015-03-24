@@ -70,6 +70,7 @@
 		01A23F3E1AB03F9400956E95 /* JFWebImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWebImageDownloader.m; sourceTree = "<group>"; };
 		01A23F401AB047F400956E95 /* JFWebImageDownloaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWebImageDownloaderOperation.h; sourceTree = "<group>"; };
 		01A23F411AB047F400956E95 /* JFWebImageDownloaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWebImageDownloaderOperation.m; sourceTree = "<group>"; };
+		01E2554E1AC10D690054D906 /* JFWebImageMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFWebImageMacro.h; sourceTree = "<group>"; };
 		01E9B95B1AA48521000FE7D5 /* HBAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBAPIManager.h; sourceTree = "<group>"; };
 		01E9B95C1AA48521000FE7D5 /* HBAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBAPIManager.m; sourceTree = "<group>"; };
 		01F8E15F1ABAD6F1004BF0DF /* JFWebImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWebImageOperation.h; sourceTree = "<group>"; };
@@ -200,6 +201,7 @@
 				0175A0E91AA83B5400DDA2A0 /* UIImageView+JFWebCache.h */,
 				0175A0EA1AA83B5400DDA2A0 /* UIImageView+JFWebCache.m */,
 				01F8E15F1ABAD6F1004BF0DF /* JFWebImageOperation.h */,
+				01E2554E1AC10D690054D906 /* JFWebImageMacro.h */,
 			);
 			name = JFWebImage;
 			sourceTree = "<group>";

@@ -10,6 +10,7 @@
 #import "JFImageCache.h"
 #import "JFWebImageDownloader.h"
 
+typedef void(^JFWebImageCompletionBlock)(UIImage *image, NSError *error, JFImageCacheType cacheType, NSURL *imageURL);
 typedef void(^JFWebImageCompletionWithFinishedBlock)(UIImage *image, NSError *error, JFImageCacheType cacheType, BOOL finished, NSURL *imageURL);
 
 @interface JFWebImageManager : NSObject

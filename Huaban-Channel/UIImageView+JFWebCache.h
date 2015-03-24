@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JFWebImageDownloader.h"
+#import "JFWebImageManager.h"
 
 @interface UIImageView (JFWebCache)
 
 - (void)sd_setImageWithURL:(NSURL *)url;
+
+- (void)sd_setImageWithURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholder
+                  progress:(JFWebImageDownloaderProgressBlock)progressBlock
+                 completed:(JFWebImageCompletionBlock)completedBlock;
 
 @end

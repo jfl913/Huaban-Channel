@@ -132,7 +132,11 @@
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     if (httpResponse.statusCode == 200) {
         NSInteger expectedLength = response.expectedContentLength > 0 ? (NSInteger)response.expectedContentLength : 0;
+        self.expectedSize = expectedLength;
         self.imageData = [[NSMutableData alloc] initWithCapacity:expectedLength];
+        if (self.progressBlock) {
+            self.progressBlock(0, expectedLength);
+        }
     }
     
 }
@@ -140,6 +144,9 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     [self.imageData appendData:data];
+    if (self.progressBlock) {
+        self.progressBlock(self.imageData.length, self.expectedSize);
+    }
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
