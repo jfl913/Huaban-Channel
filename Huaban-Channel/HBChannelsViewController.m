@@ -10,11 +10,12 @@
 #import "HBAPIManager.h"
 #import "HBChannelAPI.h"
 #import "HBChannelsViewCell.h"
+#import <Masonry.h>
 //#import <SDWebImage/UIImageView+WebCache.h>
 
 #define kHBChannelsPerPage 100
 
-static NSString *const cellIdentifier = @"HBChannelsViewCell";
+static NSString *const cellReuseIdentifier = @"HBChannelsViewCell";
 
 @interface HBChannelsViewController ()
 
@@ -30,14 +31,6 @@ static NSString *const cellIdentifier = @"HBChannelsViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    self.session = [NSURLSession sessionWithConfiguration:configuration];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.featuredChannels = [NSMutableArray array];
     self.followingChannels = [NSMutableArray array];
     HBAPIManager *manager = [HBAPIManager sharedManager];
@@ -57,7 +50,7 @@ static NSString *const cellIdentifier = @"HBChannelsViewCell";
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -81,36 +74,43 @@ static NSString *const cellIdentifier = @"HBChannelsViewCell";
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HBChannelsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    cell.tag = indexPath.row;
+    HBChannelsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier forIndexPath:indexPath];
     if (indexPath.section == 0) {
-        
+        if (self.followingChannels.count > 0) {
+            cell.channel = self.followingChannels[indexPath.row];
+        }
     }else{
-        cell.channel = self.featuredChannels[indexPath.row];
-//        cell.iconImageView.image = nil;
-        [cell updateCell];
-        
-        
-        
-//        if (cell.dataTask) {
-//            [cell.dataTask cancel];
-//            NSLog(@"cancel");
-//        }
-        
-//        NSString *urlString = [cell.channel iconURLForWidth:140];
-//        cell.dataTask = [self.session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//            if (!error) {
-//                UIImage *image = [UIImage imageWithData:data];
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    cell.iconImageView.image = image;
-//                });
-//            }
-//        }];
-//        [cell.dataTask resume];
-//        [cell.iconImageView sd_setImageWithURL:[NSURL URLWithString:urlString]];
+        if (self.featuredChannels.count > 0) {
+            cell.channel = self.featuredChannels[indexPath.row];
+        }
     }
     
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [UIView new];
+    view.backgroundColor = [UIColor lightGrayColor];
+    
+    UILabel *label = [UILabel new];
+    label.text = section == 0 ? @"我关注的话题" : @"推荐话题";
+    label.textColor = [UIColor blackColor];
+    label.font = [UIFont systemFontOfSize:12];
+    [view addSubview:label];
+
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(view.mas_left).offset(12);
+        make.centerY.equalTo(view.mas_centerY);
+    }];
+    
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 32;
 }
 
 /*

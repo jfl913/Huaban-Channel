@@ -19,6 +19,12 @@ static char loadOperationKey;
     [self sd_setImageWithURL:url placeholderImage:nil progress:nil completed:nil];
 }
 
+- (void)sd_setImageWithURL:(NSURL *)url
+                 completed:(JFWebImageCompletionBlock)completedBlock
+{
+    [self sd_setImageWithURL:url placeholderImage:nil progress:nil completed:completedBlock];
+}
+
 - (void)sd_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder progress:(JFWebImageDownloaderProgressBlock)progressBlock completed:(JFWebImageCompletionBlock)completedBlock
 {
     [self sd_cancelCurrentImageLoad];

@@ -15,6 +15,4 @@
 @property (nonatomic, strong) NSURLSessionDataTask *dataTask;
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 
-- (void)updateCell;
-
 @end

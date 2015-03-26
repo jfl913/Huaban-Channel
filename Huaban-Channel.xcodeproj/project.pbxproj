@@ -124,12 +124,9 @@
 				011E04B71AA8359E00805E65 /* JFWebImage */,
 				010B85541AA1BA9900373456 /* HBChannelAPI */,
 				010B85531AA1AC9200373456 /* JFNetWorking */,
+				018B0FFA1AC4042B00BDF53F /* HBChannelsViewController */,
 				010B85311AA1777F00373456 /* AppDelegate.h */,
 				010B85321AA1777F00373456 /* AppDelegate.m */,
-				017F89531AA566C9005A8C8D /* HBChannelsViewController.h */,
-				017F89541AA566C9005A8C8D /* HBChannelsViewController.m */,
-				017F89561AA58E90005A8C8D /* HBChannelsViewCell.h */,
-				017F89571AA58E90005A8C8D /* HBChannelsViewCell.m */,
 				010B85371AA1777F00373456 /* Main.storyboard */,
 				010B853A1AA1777F00373456 /* Images.xcassets */,
 				010B853C1AA1777F00373456 /* LaunchScreen.xib */,
@@ -204,6 +201,17 @@
 				01E2554E1AC10D690054D906 /* JFWebImageMacro.h */,
 			);
 			name = JFWebImage;
+			sourceTree = "<group>";
+		};
+		018B0FFA1AC4042B00BDF53F /* HBChannelsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				017F89531AA566C9005A8C8D /* HBChannelsViewController.h */,
+				017F89541AA566C9005A8C8D /* HBChannelsViewController.m */,
+				017F89561AA58E90005A8C8D /* HBChannelsViewCell.h */,
+				017F89571AA58E90005A8C8D /* HBChannelsViewCell.m */,
+			);
+			name = HBChannelsViewController;
 			sourceTree = "<group>";
 		};
 		141B8679CB327CD41A4035B2 /* Frameworks */ = {

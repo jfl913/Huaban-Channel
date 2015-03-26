@@ -15,8 +15,14 @@
 - (void)sd_setImageWithURL:(NSURL *)url;
 
 - (void)sd_setImageWithURL:(NSURL *)url
+                 completed:(JFWebImageCompletionBlock)completedBlock;
+
+- (void)sd_setImageWithURL:(NSURL *)url
           placeholderImage:(UIImage *)placeholder
                   progress:(JFWebImageDownloaderProgressBlock)progressBlock
+                 completed:(JFWebImageCompletionBlock)completedBlock;
+
+- (void)sd_setImageWithURL:(NSURL *)url
                  completed:(JFWebImageCompletionBlock)completedBlock;
 
 @end
