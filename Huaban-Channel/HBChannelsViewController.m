@@ -11,11 +11,11 @@
 #import "HBChannelAPI.h"
 #import "HBChannelsViewCell.h"
 #import <Masonry.h>
-//#import <SDWebImage/UIImageView+WebCache.h>
 
 #define kHBChannelsPerPage 100
 
 static NSString *const cellReuseIdentifier = @"HBChannelsViewCell";
+static NSString *const zeroFollowingcellReuseIdentifier = @"ZeroFollowingcell";
 
 @interface HBChannelsViewController ()
 
@@ -42,12 +42,32 @@ static NSString *const cellReuseIdentifier = @"HBChannelsViewCell";
     } failure:^(NSError *error) {
         NSLog(@"error: %@", error);
     }];
-
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(handleRefresh) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Methods
+
+- (void)handleRefresh
+{
+    HBAPIManager *manager = [HBAPIManager sharedManager];
+    [manager fetchFeaturedChannelsWithOffset:NSNotFound limit:kHBChannelsPerPage success:^(id responseObject) {
+        [self.featuredChannels addObjectsFromArray:responseObject];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+        });
+    } failure:^(NSError *error) {
+        NSLog(@"error: %@", error);
+    }];
+
 }
 
 #pragma mark - UITableViewDataSource
@@ -66,6 +86,9 @@ static NSString *const cellReuseIdentifier = @"HBChannelsViewCell";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     if (section == 0) {
+        if (self.followingChannels.count == 0) {
+            return 1;
+        }
         return self.followingChannels.count;
     }else{
         return self.featuredChannels.count;
@@ -74,7 +97,13 @@ static NSString *const cellReuseIdentifier = @"HBChannelsViewCell";
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0 && self.followingChannels.count == 0) {
+        UITableViewCell *zeroFollowingCell = [tableView dequeueReusableCellWithIdentifier:zeroFollowingcellReuseIdentifier forIndexPath:indexPath];
+        return zeroFollowingCell;
+    }
+    
     HBChannelsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier forIndexPath:indexPath];
+    
     if (indexPath.section == 0) {
         if (self.followingChannels.count > 0) {
             cell.channel = self.followingChannels[indexPath.row];

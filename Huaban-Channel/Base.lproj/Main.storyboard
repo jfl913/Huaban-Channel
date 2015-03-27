@@ -69,6 +69,30 @@
                                     <outlet property="iconImageView" destination="G4O-6s-dvS" id="D3g-ML-EK3"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ZeroFollowingcell" rowHeight="69" id="Htq-ew-HQH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Htq-ew-HQH" id="c3W-5c-nYm">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="em_activity_none" translatesAutoresizingMaskIntoConstraints="NO" id="jj0-hl-hko">
+                                            <rect key="frame" x="18" y="10" width="564" height="48"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="jj0-hl-hko" secondAttribute="trailing" constant="10" id="76h-IN-zIv"/>
+                                        <constraint firstItem="jj0-hl-hko" firstAttribute="top" secondItem="c3W-5c-nYm" secondAttribute="top" constant="10" id="CPn-nD-qMZ"/>
+                                        <constraint firstAttribute="bottom" secondItem="jj0-hl-hko" secondAttribute="bottom" constant="10" id="XI0-TJ-HrT"/>
+                                        <constraint firstAttribute="centerY" secondItem="jj0-hl-hko" secondAttribute="centerY" id="pMu-dx-J2e"/>
+                                        <constraint firstItem="jj0-hl-hko" firstAttribute="leading" secondItem="c3W-5c-nYm" secondAttribute="leadingMargin" constant="10" id="v6A-c1-6lY"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="pMu-dx-J2e"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="eYw-gp-uJQ" id="lDY-ra-Xg8"/>
@@ -79,7 +103,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ACg-l8-KjV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2910" y="161"/>
+            <point key="canvasLocation" x="2996" y="161"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TZV-qx-dKw">
@@ -98,4 +122,7 @@
             <point key="canvasLocation" x="2038" y="161"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="em_activity_none" width="251" height="48"/>
+    </resources>
 </document>
