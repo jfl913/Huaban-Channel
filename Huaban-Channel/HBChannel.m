@@ -32,4 +32,9 @@
     return [NSString stringWithFormat:@"http://hb-topic-img.b0.upaiyun.com/%@_sq%ld", self.icon.key, (long)width];
 }
 
+- (NSInteger)seq
+{
+    return self.channelID;
+}
+
 @end

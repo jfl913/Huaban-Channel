@@ -11,6 +11,7 @@
 #import "HBChannelAPI.h"
 #import "HBChannelsViewCell.h"
 #import <Masonry.h>
+#import <SVPullToRefresh.h>
 
 #define kHBChannelsPerPage 100
 
@@ -33,24 +34,26 @@ static NSString *const zeroFollowingcellReuseIdentifier = @"ZeroFollowingcell";
     
     self.featuredChannels = [NSMutableArray array];
     self.followingChannels = [NSMutableArray array];
-    HBAPIManager *manager = [HBAPIManager sharedManager];
-    [manager fetchFeaturedChannelsWithOffset:NSNotFound limit:kHBChannelsPerPage success:^(id responseObject) {
-        [self.featuredChannels addObjectsFromArray:responseObject];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
-        });
-    } failure:^(NSError *error) {
-        NSLog(@"error: %@", error);
-    }];
+    
+    [[HBAPIManager sharedManager] fetchFeaturedChannelsWithOffset:NSNotFound
+                                                            limit:kHBChannelsPerPage
+                                                          success:^(id responseObject) {
+                                                              self.featuredChannels = responseObject;
+                                                                dispatch_async(dispatch_get_main_queue(), ^{
+                                                                    if (self.featuredChannels.count < kHBChannelsPerPage) {
+                                                                        [self setupTableFooterView];
+                                                                    }else{
+                                                                        self.tableView.tableFooterView = nil;
+                                                                    }
+                                                                    [self.tableView reloadData];
+                                                                });
+                                                            } failure:^(NSError *error) {
+                                                                NSLog(@"error: %@", error);
+                                                            }];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(handleRefresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Methods
@@ -59,10 +62,58 @@ static NSString *const zeroFollowingcellReuseIdentifier = @"ZeroFollowingcell";
 {
     HBAPIManager *manager = [HBAPIManager sharedManager];
     [manager fetchFeaturedChannelsWithOffset:NSNotFound limit:kHBChannelsPerPage success:^(id responseObject) {
-        [self.featuredChannels addObjectsFromArray:responseObject];
+        self.featuredChannels = responseObject;
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (self.featuredChannels.count < kHBChannelsPerPage) {
+                [self setupTableFooterView];
+            }else{
+                self.tableView.tableFooterView = nil;
+            }
             [self.tableView reloadData];
             [self.refreshControl endRefreshing];
+        });
+    } failure:^(NSError *error) {
+        NSLog(@"error: %@", error);
+    }];
+}
+
+- (void)loadMore
+{
+    __weak typeof(self)weakSelf = self;
+    NSArray *array = self.featuredChannels;
+    NSInteger offset = array.count > 0 ? ((HBChannel *)[array lastObject]).seq : NSNotFound;
+    [[HBAPIManager sharedManager] fetchFeaturedChannelsWithOffset:offset
+                                                            limit:kHBChannelsPerPage
+                                                          success:^(id responseObject) {
+        [weakSelf.featuredChannels addObjectsFromArray:responseObject];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([(NSArray *)responseObject count] < kHBChannelsPerPage) {
+                UIView *view = [UIView new];
+                view.backgroundColor = [UIColor lightGrayColor];
+                
+                UILabel *label = [UILabel new];
+                label.text = @"没有更多了";
+                label.textColor = [UIColor blackColor];
+                label.font = [UIFont systemFontOfSize:12];
+                [view addSubview:label];
+                
+                [view mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
+                    make.height.equalTo(@40);
+                }];
+                
+                [label mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.centerX.equalTo(view.mas_centerX);
+                    make.centerY.equalTo(view.mas_centerY);
+                }];
+                
+                weakSelf.tableView.tableFooterView = view;
+                weakSelf.tableView.infiniteScrollingView.enabled = NO;
+                
+            }
+            
+            [weakSelf.tableView reloadData];
+            [weakSelf.tableView.infiniteScrollingView stopAnimating];
         });
     } failure:^(NSError *error) {
         NSLog(@"error: %@", error);
@@ -70,9 +121,35 @@ static NSString *const zeroFollowingcellReuseIdentifier = @"ZeroFollowingcell";
 
 }
 
+- (void)setupTableFooterView
+{
+    // 一开始就要设置好view的frame，如果用下面的autolayout来设置view的width，height，tableFooterView只有网上拖才会显示，一松手就又弹回去隐藏住了
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
+    view.backgroundColor = [UIColor lightGrayColor];
+    
+    UILabel *label = [UILabel new];
+    label.text = @"没有更多了";
+    label.textColor = [UIColor blackColor];
+    label.font = [UIFont systemFontOfSize:12];
+    [view addSubview:label];
+    
+//    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
+//        make.height.equalTo(@40);
+//    }];
+    
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(view.mas_centerX);
+        make.centerY.equalTo(view.mas_centerY);
+    }];
+    
+    self.tableView.tableFooterView = view;
+}
+
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     // Return the number of sections.
     if (!self.followingChannels.count && !self.featuredChannels.count) {
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -83,7 +160,8 @@ static NSString *const zeroFollowingcellReuseIdentifier = @"ZeroFollowingcell";
     return 2;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     // Return the number of rows in the section.
     if (section == 0) {
         if (self.followingChannels.count == 0) {
@@ -96,7 +174,8 @@ static NSString *const zeroFollowingcellReuseIdentifier = @"ZeroFollowingcell";
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     if (indexPath.section == 0 && self.followingChannels.count == 0) {
         UITableViewCell *zeroFollowingCell = [tableView dequeueReusableCellWithIdentifier:zeroFollowingcellReuseIdentifier forIndexPath:indexPath];
         return zeroFollowingCell;
@@ -141,49 +220,5 @@ static NSString *const zeroFollowingcellReuseIdentifier = @"ZeroFollowingcell";
 {
     return 32;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

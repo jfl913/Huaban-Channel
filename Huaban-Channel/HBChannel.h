@@ -21,7 +21,7 @@
 @property (nonatomic, copy) NSString *channelDescription;
 //@property (nonatomic) BOOL isFollowing;
 //@property (nonatomic) NSInteger badge;
-//@property (nonatomic) NSInteger seq;
+@property (nonatomic) NSInteger seq;
 
 - (NSString *)iconURLForWidth:(NSInteger)width;
 
