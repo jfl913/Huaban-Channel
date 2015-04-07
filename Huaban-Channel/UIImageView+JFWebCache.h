@@ -22,7 +22,4 @@
                   progress:(JFWebImageDownloaderProgressBlock)progressBlock
                  completed:(JFWebImageCompletionBlock)completedBlock;
 
-- (void)sd_setImageWithURL:(NSURL *)url
-                 completed:(JFWebImageCompletionBlock)completedBlock;
-
 @end
