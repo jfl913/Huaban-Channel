@@ -69,7 +69,7 @@
                                     <outlet property="iconImageView" destination="G4O-6s-dvS" id="D3g-ML-EK3"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ZeroFollowingcell" rowHeight="69" id="Htq-ew-HQH">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ZeroFollowingcell" rowHeight="69" id="Htq-ew-HQH">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Htq-ew-HQH" id="c3W-5c-nYm">
