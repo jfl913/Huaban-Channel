@@ -8,6 +8,7 @@ pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 #pod 'SDWebImage', '~>3.6'
 pod 'Masonry'
 pod 'SVPullToRefresh'
+pod 'SVProgressHUD'
 
 end
 
