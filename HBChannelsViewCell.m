@@ -32,7 +32,7 @@
     [super layoutSubviews];
     
     self.channelTitleLabel.text = self.channel.title;
-    self.channelMetaLabel.text = [NSString stringWithFormat:@"%ld", (long)self.channel.itemCount];
+    self.channelMetaLabel.text = [NSString stringWithFormat:@"已有%ld条发言", (long)self.channel.itemCount];
     NSString *urlString = [self.channel iconURLForWidth:140];
     [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:urlString]
                                  completed:^(UIImage *image, NSError *error, JFImageCacheType cacheType, NSURL *imageURL) {

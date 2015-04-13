@@ -17,7 +17,7 @@
 #define kHBChannelsPerPage 100
 
 static NSString *const cellReuseIdentifier = @"HBChannelsViewCell";
-static NSString *const zeroFollowingcellReuseIdentifier = @"ZeroFollowingcell";
+static NSString *const zeroFollowingCellReuseIdentifier = @"ZeroFollowingCell";
 
 @interface HBChannelsViewController ()
 
@@ -183,7 +183,7 @@ static NSString *const zeroFollowingcellReuseIdentifier = @"ZeroFollowingcell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0 && self.followingChannels.count == 0) {
-        UITableViewCell *zeroFollowingCell = [tableView dequeueReusableCellWithIdentifier:zeroFollowingcellReuseIdentifier forIndexPath:indexPath];
+        UITableViewCell *zeroFollowingCell = [tableView dequeueReusableCellWithIdentifier:zeroFollowingCellReuseIdentifier forIndexPath:indexPath];
         return zeroFollowingCell;
     }
     
