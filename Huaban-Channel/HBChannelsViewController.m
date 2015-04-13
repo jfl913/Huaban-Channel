@@ -227,4 +227,26 @@ static NSString *const zeroFollowingcellReuseIdentifier = @"ZeroFollowingcell";
     return 32;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0 && indexPath.row == 0 && self.followingChannels.count == 0) {
+        return;
+    }
+    
+    if (indexPath.section == 0) {
+        
+    }
+    
+    if (indexPath.section == 1) {
+        HBChannel *channel = self.featuredChannels[indexPath.row];
+        NSLog(@"channel: %@", channel);
+    }
+}
+
+#pragma mark - Navigate
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+}
+
 @end

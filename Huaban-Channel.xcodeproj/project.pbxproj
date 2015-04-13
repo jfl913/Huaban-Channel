@@ -125,6 +125,7 @@
 				010B85541AA1BA9900373456 /* HBChannelAPI */,
 				010B85531AA1AC9200373456 /* JFNetWorking */,
 				018B0FFA1AC4042B00BDF53F /* HBChannelsViewController */,
+				01256F131AD3E37400620711 /* HBChannelsItemsViewController */,
 				010B85311AA1777F00373456 /* AppDelegate.h */,
 				010B85321AA1777F00373456 /* AppDelegate.m */,
 				010B85371AA1777F00373456 /* Main.storyboard */,
@@ -201,6 +202,13 @@
 				01E2554E1AC10D690054D906 /* JFWebImageMacro.h */,
 			);
 			name = JFWebImage;
+			sourceTree = "<group>";
+		};
+		01256F131AD3E37400620711 /* HBChannelsItemsViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = HBChannelsItemsViewController;
 			sourceTree = "<group>";
 		};
 		018B0FFA1AC4042B00BDF53F /* HBChannelsViewController */ = {

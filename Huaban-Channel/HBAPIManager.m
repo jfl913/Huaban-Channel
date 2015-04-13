@@ -11,6 +11,9 @@
 
 static NSString *API_SERVER = @"https://api.huaban.com";
 
+typedef void(^JFSuccessBlock)(NSURLSessionDataTask *task, id responseObject);
+typedef void(^JFFailureBlock)(NSURLSessionDataTask *task, NSError *error);
+
 @implementation HBAPIManager
 
 + (instancetype)sharedManager
@@ -32,7 +35,7 @@ static NSString *API_SERVER = @"https://api.huaban.com";
     NSString *max = offset != NSNotFound ? [NSString stringWithFormat:@"&max=%ld", (long)offset] : @"";
     NSString *path = [NSString stringWithFormat:@"/mobile_topics/featured?limit=%ld%@", (long)limit, max];
     
-    return [self requestWithMethod:@"GET"
+    [self requestWithMethod:@"GET"
                       relativePath:path
                         parameters:nil
                        resultClass:[HBChannel class]
@@ -49,37 +52,39 @@ static NSString *API_SERVER = @"https://api.huaban.com";
                        success:(void (^)(id responseObject))success
                        failure:(void (^)(NSError *error))failure
 {
-    __block NSArray *dataArray = [NSArray array];
-    // 暂时只实现了GET方法
-    if ([method isEqualToString:@"GET"]) {
-        [self GET:relativePath parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-            dataArray = [self parseResponseObject:responseObject withResultClass:resultClass andListKey:listKey];
-            success(dataArray);
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            failure(error);
-        }];
-    }
-}
-
-//有一些条件未判断，以后遇到再补充
-- (NSArray *)parseResponseObject:(id)responseObject withResultClass:(Class)resultClass andListKey:(NSString *)listKey
-{
-    NSMutableArray *parsedArray = [NSMutableArray array];
-    if (listKey.length > 0) {
-        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            if ([responseObject[listKey] isKindOfClass:[NSArray class]]) {
-                NSArray *array = responseObject[listKey];
-                for (NSDictionary *dic in array) {
-                    [parsedArray addObject:[MTLJSONAdapter modelOfClass:resultClass fromJSONDictionary:dic error:nil]];
+    JFSuccessBlock jfSuccessBlock = ^(NSURLSessionDataTask *task, id responseObject){
+        if (listKey.length > 0) {
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                if ([responseObject[listKey] isKindOfClass:[NSArray class]]) {
+                    NSArray *array = responseObject[listKey];
+                    NSMutableArray *parsedArray = [NSMutableArray array];
+                    for (NSDictionary *dic in array) {
+                        [parsedArray addObject:[MTLJSONAdapter modelOfClass:resultClass fromJSONDictionary:dic error:nil]];
+                    }
+                    if (success) {
+                        success(parsedArray);
+                    }
+                }else if ([responseObject[listKey] isKindOfClass:[NSDictionary class]]){
+                    MTLModel *model = [MTLJSONAdapter modelOfClass:resultClass fromJSONDictionary:responseObject[listKey] error:nil];
+                    success(model);
                 }
-            }else if ([responseObject[listKey] isKindOfClass:[NSDictionary class]]){
-                [parsedArray addObject:[MTLJSONAdapter modelOfClass:resultClass fromJSONDictionary:responseObject[listKey] error:nil]];
             }
         }
-    }
+    };
     
-    return parsedArray;
+    JFFailureBlock jfFailureBlock = ^(NSURLSessionDataTask *task, NSError *error)
+    {
+        if (failure) {
+            failure(error);
+        }
+    };
+    
+    if ([method isEqualToString:@"GET"]) {
+        [self GET:relativePath
+       parameters:parameters
+          success:jfSuccessBlock
+          failure:jfFailureBlock];
+    }
 }
-
 
 @end
