@@ -12,6 +12,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HBChannelsViewCell" rowHeight="73" id="esY-bU-OTk" customClass="HBChannelsViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -127,6 +128,12 @@
                                                                 <constraint firstAttribute="width" constant="32" id="1JN-yL-Ten"/>
                                                                 <constraint firstAttribute="height" constant="32" id="nkc-0O-una"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="16"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
                                                             <variation key="default">
                                                                 <mask key="constraints">
                                                                     <exclude reference="1JN-yL-Ten"/>
@@ -472,32 +479,67 @@
                                     <outlet property="delegate" destination="GAc-ZE-qto" id="t9z-PG-x4g"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Vjh-XB-KsD">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="J9Z-lG-Fn7"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="J9Z-lG-Fn7"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="J9Z-lG-Fn7"/>
+                                    </mask>
+                                </variation>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fhg-P9-3MM" firstAttribute="leading" secondItem="qwR-nL-fqi" secondAttribute="leading" id="0NF-cb-0QM"/>
                             <constraint firstAttribute="trailing" secondItem="fhg-P9-3MM" secondAttribute="trailing" id="AaI-nB-a42"/>
                             <constraint firstItem="grp-gj-OpX" firstAttribute="top" secondItem="fhg-P9-3MM" secondAttribute="bottom" id="DdS-pu-Tfq"/>
+                            <constraint firstItem="Vjh-XB-KsD" firstAttribute="leading" secondItem="qwR-nL-fqi" secondAttribute="leading" id="Lmn-x1-4h8"/>
+                            <constraint firstAttribute="centerY" secondItem="Vjh-XB-KsD" secondAttribute="centerY" id="MyH-4k-ee6"/>
                             <constraint firstItem="fhg-P9-3MM" firstAttribute="top" secondItem="qwR-nL-fqi" secondAttribute="top" id="fqt-4Q-xfU"/>
+                            <constraint firstAttribute="centerX" secondItem="Vjh-XB-KsD" secondAttribute="centerX" id="iy0-1o-HSU"/>
+                            <constraint firstAttribute="trailing" secondItem="Vjh-XB-KsD" secondAttribute="trailing" id="le7-0W-kwJ"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Vjh-XB-KsD"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="0NF-cb-0QM"/>
                                 <exclude reference="AaI-nB-a42"/>
                                 <exclude reference="fqt-4Q-xfU"/>
+                                <exclude reference="Lmn-x1-4h8"/>
+                                <exclude reference="MyH-4k-ee6"/>
+                                <exclude reference="iy0-1o-HSU"/>
+                                <exclude reference="le7-0W-kwJ"/>
                                 <exclude reference="DdS-pu-Tfq"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Vjh-XB-KsD"/>
+                            </mask>
                             <mask key="constraints">
                                 <include reference="0NF-cb-0QM"/>
                                 <include reference="AaI-nB-a42"/>
                                 <include reference="fqt-4Q-xfU"/>
+                                <include reference="Lmn-x1-4h8"/>
+                                <include reference="MyH-4k-ee6"/>
+                                <exclude reference="iy0-1o-HSU"/>
+                                <include reference="le7-0W-kwJ"/>
                                 <include reference="DdS-pu-Tfq"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="Vjh-XB-KsD" id="icO-c3-kB6"/>
                         <outlet property="tableView" destination="fhg-P9-3MM" id="oEp-C1-iOa"/>
                     </connections>
                 </viewController>

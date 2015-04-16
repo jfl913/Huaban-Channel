@@ -10,12 +10,14 @@
 #import "HBAPIManager.h"
 #import "HBChannelItem.h"
 #import "HBChannelItemsViewCell.h"
+#import "HRToastManager.h"
 
 #define kHBChannelItemsPerPage 20
 
 @interface HBChannelItemsViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
@@ -27,16 +29,20 @@
     // Do any additional setup after loading the view.
     self.title = self.channel.title;
     self.dataArray = [@[] mutableCopy];
+    [self.activityIndicatorView startAnimating];
     [[HBAPIManager sharedManager] fetchChannelItemsWithChannelID:self.channel.channelID
                                                           offset:NSNotFound
                                                            limit:kHBChannelItemsPerPage
                                                          success:^(id responseObject) {
                                                              [self.dataArray addObjectsFromArray:responseObject];
                                                              dispatch_async(dispatch_get_main_queue(), ^{
+                                                                 [self.activityIndicatorView stopAnimating];
                                                                  [self.tableView reloadData];
                                                              });
                                                          } failure:^(NSError *error) {
-                                                             NSLog(@"error: %@", error);
+                                                             [self.activityIndicatorView stopAnimating];
+                                                             NSString *erroMessage = error.userInfo[@"message"];
+                                                             [HRToastManager showErrorMessage:erroMessage];
                                                          }];
 }
 
@@ -49,6 +55,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (self.dataArray.count == 0) {
+        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        return 0;
+    }
+    
+    tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     return self.dataArray.count;
 }
 

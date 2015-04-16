@@ -25,6 +25,7 @@
 		01A23F421AB047F400956E95 /* JFWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A23F411AB047F400956E95 /* JFWebImageDownloaderOperation.m */; };
 		01BBF48A1ADF4D0D0046DA88 /* HBChannelItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BBF4891ADF4D0D0046DA88 /* HBChannelItemsViewController.m */; };
 		01BBF4BF1ADF6C350046DA88 /* HBChannelItemsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BBF4BE1ADF6C350046DA88 /* HBChannelItemsViewCell.m */; };
+		01BBF4C21ADF96D40046DA88 /* HRToastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BBF4C11ADF96D40046DA88 /* HRToastManager.m */; };
 		01E9B95D1AA48521000FE7D5 /* HBAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E9B95C1AA48521000FE7D5 /* HBAPIManager.m */; };
 		01FEE0AA1ADCEFB100B72A72 /* HBChannelItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FEE0A91ADCEFB100B72A72 /* HBChannelItem.m */; };
 		01FEE0AD1ADCF0E700B72A72 /* HBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FEE0AC1ADCF0E700B72A72 /* HBUser.m */; };
@@ -79,6 +80,8 @@
 		01BBF4891ADF4D0D0046DA88 /* HBChannelItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBChannelItemsViewController.m; sourceTree = "<group>"; };
 		01BBF4BD1ADF6C350046DA88 /* HBChannelItemsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBChannelItemsViewCell.h; sourceTree = "<group>"; };
 		01BBF4BE1ADF6C350046DA88 /* HBChannelItemsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBChannelItemsViewCell.m; sourceTree = "<group>"; };
+		01BBF4C01ADF96D40046DA88 /* HRToastManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRToastManager.h; path = "../../her-ios/her/HRToastManager.h"; sourceTree = "<group>"; };
+		01BBF4C11ADF96D40046DA88 /* HRToastManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRToastManager.m; path = "../../her-ios/her/HRToastManager.m"; sourceTree = "<group>"; };
 		01E2554E1AC10D690054D906 /* JFWebImageMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFWebImageMacro.h; sourceTree = "<group>"; };
 		01E9B95B1AA48521000FE7D5 /* HBAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBAPIManager.h; sourceTree = "<group>"; };
 		01E9B95C1AA48521000FE7D5 /* HBAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBAPIManager.m; sourceTree = "<group>"; };
@@ -136,6 +139,7 @@
 		010B852C1AA1777F00373456 /* Huaban-Channel */ = {
 			isa = PBXGroup;
 			children = (
+				01BBF4C31ADF96E80046DA88 /* Helper */,
 				011E04B71AA8359E00805E65 /* JFWebImage */,
 				010B85541AA1BA9900373456 /* HBChannelAPI */,
 				010B85531AA1AC9200373456 /* JFNetWorking */,
@@ -245,6 +249,15 @@
 				017F89571AA58E90005A8C8D /* HBChannelsViewCell.m */,
 			);
 			name = HBChannelsViewController;
+			sourceTree = "<group>";
+		};
+		01BBF4C31ADF96E80046DA88 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				01BBF4C01ADF96D40046DA88 /* HRToastManager.h */,
+				01BBF4C11ADF96D40046DA88 /* HRToastManager.m */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		141B8679CB327CD41A4035B2 /* Frameworks */ = {
@@ -413,6 +426,7 @@
 				01A23F421AB047F400956E95 /* JFWebImageDownloaderOperation.m in Sources */,
 				010F34C31AA44E17008140EB /* JFHTTPSessionManager.m in Sources */,
 				01A23F3F1AB03F9400956E95 /* JFWebImageDownloader.m in Sources */,
+				01BBF4C21ADF96D40046DA88 /* HRToastManager.m in Sources */,
 				0175A0EB1AA83B5400DDA2A0 /* UIImageView+JFWebCache.m in Sources */,
 				01FEE0B01ADCF76300B72A72 /* HBAvatar.m in Sources */,
 				010B85301AA1777F00373456 /* main.m in Sources */,

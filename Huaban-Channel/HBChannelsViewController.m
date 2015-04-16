@@ -12,7 +12,7 @@
 #import "HBChannelsViewCell.h"
 #import <Masonry.h>
 #import <SVPullToRefresh.h>
-#import <SVProgressHUD.h>
+#import "HRToastManager.h"
 #import "HBChannelItemsViewController.h"
 
 #define kHBChannelsPerPage 100
@@ -37,9 +37,6 @@ static NSString *const zeroFollowingCellReuseIdentifier = @"ZeroFollowingCell";
     self.featuredChannels = [NSMutableArray array];
     self.followingChannels = [NSMutableArray array];
     
-    [SVProgressHUD setBackgroundColor:[UIColor lightGrayColor]];
-    [SVProgressHUD show];
-    
     [[HBAPIManager sharedManager] fetchFeaturedChannelsWithOffset:NSNotFound
                                                             limit:kHBChannelsPerPage
                                                           success:^(id responseObject) {
@@ -50,12 +47,10 @@ static NSString *const zeroFollowingCellReuseIdentifier = @"ZeroFollowingCell";
                                                                     }else{
                                                                         self.tableView.tableFooterView = nil;
                                                                     }
-                                                                    [SVProgressHUD dismiss];
                                                                     [self.tableView reloadData];
                                                                 });
                                                             } failure:^(NSError *error) {
-                                                                [SVProgressHUD showErrorWithStatus:@"加载失败"];
-                                                                NSLog(@"error: %@", error);
+                                                                [HRToastManager showErrorMessage:@"加载失败"];
                                                             }];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
