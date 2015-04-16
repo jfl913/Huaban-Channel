@@ -24,6 +24,9 @@
 		01A23F3F1AB03F9400956E95 /* JFWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A23F3E1AB03F9400956E95 /* JFWebImageDownloader.m */; };
 		01A23F421AB047F400956E95 /* JFWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A23F411AB047F400956E95 /* JFWebImageDownloaderOperation.m */; };
 		01E9B95D1AA48521000FE7D5 /* HBAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E9B95C1AA48521000FE7D5 /* HBAPIManager.m */; };
+		01FEE0AA1ADCEFB100B72A72 /* HBChannelItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FEE0A91ADCEFB100B72A72 /* HBChannelItem.m */; };
+		01FEE0AD1ADCF0E700B72A72 /* HBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FEE0AC1ADCF0E700B72A72 /* HBUser.m */; };
+		01FEE0B01ADCF76300B72A72 /* HBAvatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FEE0AF1ADCF76300B72A72 /* HBAvatar.m */; };
 		38FD8AF841E5871E1C94C3E4 /* libPods-Huaban-Channel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 624AD661FEF6998F784E4A7E /* libPods-Huaban-Channel.a */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +77,12 @@
 		01E9B95B1AA48521000FE7D5 /* HBAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBAPIManager.h; sourceTree = "<group>"; };
 		01E9B95C1AA48521000FE7D5 /* HBAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBAPIManager.m; sourceTree = "<group>"; };
 		01F8E15F1ABAD6F1004BF0DF /* JFWebImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWebImageOperation.h; sourceTree = "<group>"; };
+		01FEE0A81ADCEFB100B72A72 /* HBChannelItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBChannelItem.h; sourceTree = "<group>"; };
+		01FEE0A91ADCEFB100B72A72 /* HBChannelItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBChannelItem.m; sourceTree = "<group>"; };
+		01FEE0AB1ADCF0E700B72A72 /* HBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBUser.h; sourceTree = "<group>"; };
+		01FEE0AC1ADCF0E700B72A72 /* HBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBUser.m; sourceTree = "<group>"; };
+		01FEE0AE1ADCF76300B72A72 /* HBAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBAvatar.h; sourceTree = "<group>"; };
+		01FEE0AF1ADCF76300B72A72 /* HBAvatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBAvatar.m; sourceTree = "<group>"; };
 		459924764AFEF0922C2D4EE5 /* Pods-Huaban-Channel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Huaban-Channel.release.xcconfig"; path = "Pods/Target Support Files/Pods-Huaban-Channel/Pods-Huaban-Channel.release.xcconfig"; sourceTree = "<group>"; };
 		624AD661FEF6998F784E4A7E /* libPods-Huaban-Channel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Huaban-Channel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE895522796D48A89FFF734 /* Pods-Huaban-Channel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Huaban-Channel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Huaban-Channel/Pods-Huaban-Channel.debug.xcconfig"; sourceTree = "<group>"; };
@@ -181,6 +190,12 @@
 				0149334A1AA408980048A388 /* HBChannel.m */,
 				010F34BE1AA414AF008140EB /* HBFile.h */,
 				010F34BF1AA414AF008140EB /* HBFile.m */,
+				01FEE0A81ADCEFB100B72A72 /* HBChannelItem.h */,
+				01FEE0A91ADCEFB100B72A72 /* HBChannelItem.m */,
+				01FEE0AB1ADCF0E700B72A72 /* HBUser.h */,
+				01FEE0AC1ADCF0E700B72A72 /* HBUser.m */,
+				01FEE0AE1ADCF76300B72A72 /* HBAvatar.h */,
+				01FEE0AF1ADCF76300B72A72 /* HBAvatar.m */,
 			);
 			name = HBChannelAPI;
 			sourceTree = "<group>";
@@ -378,14 +393,17 @@
 				016AB88E1AB28CDF00FEF653 /* JFImageCache.m in Sources */,
 				01E9B95D1AA48521000FE7D5 /* HBAPIManager.m in Sources */,
 				017F89551AA566C9005A8C8D /* HBChannelsViewController.m in Sources */,
+				01FEE0AD1ADCF0E700B72A72 /* HBUser.m in Sources */,
 				0149334B1AA408980048A388 /* HBChannel.m in Sources */,
 				010F34C01AA414AF008140EB /* HBFile.m in Sources */,
+				01FEE0AA1ADCEFB100B72A72 /* HBChannelItem.m in Sources */,
 				011E04BA1AA8361100805E65 /* JFWebImageManager.m in Sources */,
 				010B85331AA1777F00373456 /* AppDelegate.m in Sources */,
 				01A23F421AB047F400956E95 /* JFWebImageDownloaderOperation.m in Sources */,
 				010F34C31AA44E17008140EB /* JFHTTPSessionManager.m in Sources */,
 				01A23F3F1AB03F9400956E95 /* JFWebImageDownloader.m in Sources */,
 				0175A0EB1AA83B5400DDA2A0 /* UIImageView+JFWebCache.m in Sources */,
+				01FEE0B01ADCF76300B72A72 /* HBAvatar.m in Sources */,
 				010B85301AA1777F00373456 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

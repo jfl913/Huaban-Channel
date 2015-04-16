@@ -17,4 +17,10 @@
                                 success:(void (^)(id responseObject))success
                                 failure:(void (^)(NSError *error))failure;
 
+- (void)fetchChannelItemsWithChannelID:(NSInteger)channelID
+                                offset:(NSInteger)offset
+                                 limit:(NSInteger)limit
+                               success:(void (^)(id responseObject))success
+                               failure:(void (^)(NSError *error))failure;
+
 @end

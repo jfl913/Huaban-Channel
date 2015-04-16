@@ -15,6 +15,8 @@
 #import <SVProgressHUD.h>
 
 #define kHBChannelsPerPage 100
+#define kHBChannelItemsPerPage 20
+
 
 static NSString *const cellReuseIdentifier = @"HBChannelsViewCell";
 static NSString *const zeroFollowingCellReuseIdentifier = @"ZeroFollowingCell";
@@ -129,7 +131,7 @@ static NSString *const zeroFollowingCellReuseIdentifier = @"ZeroFollowingCell";
 
 - (void)setupTableFooterView
 {
-    // 一开始就要设置好view的frame，如果用下面的autolayout来设置view的width，height，tableFooterView只有网上拖才会显示，一松手就又弹回去隐藏住了
+    // 一开始就要设置好view的frame，如果用下面的autolayout来设置view的width，height，tableFooterView只有往上拖才会显示，一松手就又弹回去隐藏住了
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
     view.backgroundColor = [UIColor lightGrayColor];
     
@@ -138,11 +140,6 @@ static NSString *const zeroFollowingCellReuseIdentifier = @"ZeroFollowingCell";
     label.textColor = [UIColor blackColor];
     label.font = [UIFont systemFontOfSize:12];
     [view addSubview:label];
-    
-//    [view mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
-//        make.height.equalTo(@40);
-//    }];
     
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(view.mas_centerX);
@@ -239,7 +236,17 @@ static NSString *const zeroFollowingCellReuseIdentifier = @"ZeroFollowingCell";
     
     if (indexPath.section == 1) {
         HBChannel *channel = self.featuredChannels[indexPath.row];
-        NSLog(@"channel: %@", channel);
+        [[HBAPIManager sharedManager] fetchChannelItemsWithChannelID:channel.channelID
+                                                              offset:NSNotFound
+                                                               limit:kHBChannelItemsPerPage
+                                                             success:^(id responseObject) {
+                                                                 for (HBChannelItem *item in responseObject) {
+                                                                     HBAvatar *jflAvatar = item.user.hbAvatar;
+                                                                     NSLog(@"jfl: %@", jflAvatar);
+                                                                 }
+                                                             } failure:^(NSError *error) {
+                                                                 NSLog(@"error: %@", error);
+                                                             }];
     }
 }
 

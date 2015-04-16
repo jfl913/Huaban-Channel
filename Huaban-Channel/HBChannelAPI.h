@@ -9,3 +9,6 @@
 #import "HBAPIManager.h"
 #import "HBChannel.h"
 #import "HBFile.h"
+#import "HBChannelItem.h"
+#import "HBUser.h"
+#import "HBAvatar.h"

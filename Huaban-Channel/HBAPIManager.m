@@ -44,6 +44,23 @@ typedef void(^JFFailureBlock)(NSURLSessionDataTask *task, NSError *error);
                            failure:failure];
 }
 
+- (void)fetchChannelItemsWithChannelID:(NSInteger)channelID
+                                offset:(NSInteger)offset
+                                 limit:(NSInteger)limit
+                               success:(void (^)(id responseObject))success
+                               failure:(void (^)(NSError *error))failure
+{
+    NSString *max = offset != NSNotFound ? [NSString stringWithFormat:@"&max=%ld", (long)offset] : @"";
+    NSString *path = [NSString stringWithFormat:@"/mobile_topics/%ld/posts?limit=%ld%@", (long)channelID, (long)limit, max];
+    [self requestWithMethod:@"GET"
+               relativePath:path
+                 parameters:nil
+                resultClass:[HBChannelItem class]
+                    listKey:@"posts"
+                    success:success
+                    failure:failure];
+}
+
 - (void)requestWithMethod:(NSString *)method
                   relativePath:(NSString *)relativePath
                     parameters:(NSDictionary *)parameters
