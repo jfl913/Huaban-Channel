@@ -23,6 +23,8 @@
 		017F89581AA58E90005A8C8D /* HBChannelsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 017F89571AA58E90005A8C8D /* HBChannelsViewCell.m */; };
 		01A23F3F1AB03F9400956E95 /* JFWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A23F3E1AB03F9400956E95 /* JFWebImageDownloader.m */; };
 		01A23F421AB047F400956E95 /* JFWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A23F411AB047F400956E95 /* JFWebImageDownloaderOperation.m */; };
+		01BBF48A1ADF4D0D0046DA88 /* HBChannelItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BBF4891ADF4D0D0046DA88 /* HBChannelItemsViewController.m */; };
+		01BBF4BF1ADF6C350046DA88 /* HBChannelItemsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BBF4BE1ADF6C350046DA88 /* HBChannelItemsViewCell.m */; };
 		01E9B95D1AA48521000FE7D5 /* HBAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E9B95C1AA48521000FE7D5 /* HBAPIManager.m */; };
 		01FEE0AA1ADCEFB100B72A72 /* HBChannelItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FEE0A91ADCEFB100B72A72 /* HBChannelItem.m */; };
 		01FEE0AD1ADCF0E700B72A72 /* HBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FEE0AC1ADCF0E700B72A72 /* HBUser.m */; };
@@ -73,6 +75,10 @@
 		01A23F3E1AB03F9400956E95 /* JFWebImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWebImageDownloader.m; sourceTree = "<group>"; };
 		01A23F401AB047F400956E95 /* JFWebImageDownloaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWebImageDownloaderOperation.h; sourceTree = "<group>"; };
 		01A23F411AB047F400956E95 /* JFWebImageDownloaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWebImageDownloaderOperation.m; sourceTree = "<group>"; };
+		01BBF4881ADF4D0D0046DA88 /* HBChannelItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBChannelItemsViewController.h; sourceTree = "<group>"; };
+		01BBF4891ADF4D0D0046DA88 /* HBChannelItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBChannelItemsViewController.m; sourceTree = "<group>"; };
+		01BBF4BD1ADF6C350046DA88 /* HBChannelItemsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBChannelItemsViewCell.h; sourceTree = "<group>"; };
+		01BBF4BE1ADF6C350046DA88 /* HBChannelItemsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBChannelItemsViewCell.m; sourceTree = "<group>"; };
 		01E2554E1AC10D690054D906 /* JFWebImageMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFWebImageMacro.h; sourceTree = "<group>"; };
 		01E9B95B1AA48521000FE7D5 /* HBAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBAPIManager.h; sourceTree = "<group>"; };
 		01E9B95C1AA48521000FE7D5 /* HBAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBAPIManager.m; sourceTree = "<group>"; };
@@ -134,7 +140,7 @@
 				010B85541AA1BA9900373456 /* HBChannelAPI */,
 				010B85531AA1AC9200373456 /* JFNetWorking */,
 				018B0FFA1AC4042B00BDF53F /* HBChannelsViewController */,
-				01256F131AD3E37400620711 /* HBChannelsItemsViewController */,
+				01256F131AD3E37400620711 /* HBChannelItemsViewController */,
 				010B85311AA1777F00373456 /* AppDelegate.h */,
 				010B85321AA1777F00373456 /* AppDelegate.m */,
 				010B85371AA1777F00373456 /* Main.storyboard */,
@@ -219,11 +225,15 @@
 			name = JFWebImage;
 			sourceTree = "<group>";
 		};
-		01256F131AD3E37400620711 /* HBChannelsItemsViewController */ = {
+		01256F131AD3E37400620711 /* HBChannelItemsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				01BBF4881ADF4D0D0046DA88 /* HBChannelItemsViewController.h */,
+				01BBF4891ADF4D0D0046DA88 /* HBChannelItemsViewController.m */,
+				01BBF4BD1ADF6C350046DA88 /* HBChannelItemsViewCell.h */,
+				01BBF4BE1ADF6C350046DA88 /* HBChannelItemsViewCell.m */,
 			);
-			name = HBChannelsItemsViewController;
+			name = HBChannelItemsViewController;
 			sourceTree = "<group>";
 		};
 		018B0FFA1AC4042B00BDF53F /* HBChannelsViewController */ = {
@@ -394,6 +404,7 @@
 				01E9B95D1AA48521000FE7D5 /* HBAPIManager.m in Sources */,
 				017F89551AA566C9005A8C8D /* HBChannelsViewController.m in Sources */,
 				01FEE0AD1ADCF0E700B72A72 /* HBUser.m in Sources */,
+				01BBF4BF1ADF6C350046DA88 /* HBChannelItemsViewCell.m in Sources */,
 				0149334B1AA408980048A388 /* HBChannel.m in Sources */,
 				010F34C01AA414AF008140EB /* HBFile.m in Sources */,
 				01FEE0AA1ADCEFB100B72A72 /* HBChannelItem.m in Sources */,
@@ -405,6 +416,7 @@
 				0175A0EB1AA83B5400DDA2A0 /* UIImageView+JFWebCache.m in Sources */,
 				01FEE0B01ADCF76300B72A72 /* HBAvatar.m in Sources */,
 				010B85301AA1777F00373456 /* main.m in Sources */,
+				01BBF48A1ADF4D0D0046DA88 /* HBChannelItemsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

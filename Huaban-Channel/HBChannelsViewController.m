@@ -13,10 +13,9 @@
 #import <Masonry.h>
 #import <SVPullToRefresh.h>
 #import <SVProgressHUD.h>
+#import "HBChannelItemsViewController.h"
 
 #define kHBChannelsPerPage 100
-#define kHBChannelItemsPerPage 20
-
 
 static NSString *const cellReuseIdentifier = @"HBChannelsViewCell";
 static NSString *const zeroFollowingCellReuseIdentifier = @"ZeroFollowingCell";
@@ -224,36 +223,27 @@ static NSString *const zeroFollowingCellReuseIdentifier = @"ZeroFollowingCell";
     return 32;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0 && indexPath.row == 0 && self.followingChannels.count == 0) {
-        return;
-    }
-    
-    if (indexPath.section == 0) {
-        
-    }
-    
-    if (indexPath.section == 1) {
-        HBChannel *channel = self.featuredChannels[indexPath.row];
-        [[HBAPIManager sharedManager] fetchChannelItemsWithChannelID:channel.channelID
-                                                              offset:NSNotFound
-                                                               limit:kHBChannelItemsPerPage
-                                                             success:^(id responseObject) {
-                                                                 for (HBChannelItem *item in responseObject) {
-                                                                     HBAvatar *jflAvatar = item.user.hbAvatar;
-                                                                     NSLog(@"jfl: %@", jflAvatar);
-                                                                 }
-                                                             } failure:^(NSError *error) {
-                                                                 NSLog(@"error: %@", error);
-                                                             }];
-    }
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (indexPath.section == 0 && indexPath.row == 0 && self.followingChannels.count == 0) {
+//        return;
+//    }
+//    
+//    if (indexPath.section == 0) {
+//        
+//    }
+//}
 
 #pragma mark - Navigate
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    if ([segue.identifier isEqualToString:@"channelItems"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        HBChannelItemsViewController *channelItemsViewController = (HBChannelItemsViewController *)segue.destinationViewController;
+        if (indexPath.section == 1) {
+            channelItemsViewController.channel = self.featuredChannels[indexPath.row];
+        }
+    }
 }
 
 @end

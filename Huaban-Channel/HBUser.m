@@ -26,7 +26,7 @@
 - (HBAvatar *)hbAvatar
 {
     if ([_avatar isKindOfClass:[NSDictionary class]]) {
-        _hbAvatar = (HBAvatar *)_avatar;
+        _hbAvatar = [MTLJSONAdapter modelOfClass:[HBAvatar class] fromJSONDictionary:_avatar error:nil];
     }
     
     return _hbAvatar;
