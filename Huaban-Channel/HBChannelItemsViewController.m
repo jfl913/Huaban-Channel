@@ -66,11 +66,13 @@ static NSString *const reuseCellIdentifier = @"HBChannelItemsViewCellID";
                                                           offset:offset
                                                            limit:kHBChannelItemsPerPage
                                                          success:^(id responseObject) {
-                                                             [self.dataArray addObjectsFromArray:responseObject];
+                                                             [weakSelf.dataArray addObjectsFromArray:responseObject];
                                                              dispatch_async(dispatch_get_main_queue(), ^{
-                                                                 [self.tableView reloadData];
+                                                                 [weakSelf.tableView reloadData];
+                                                                 [weakSelf.tableView.infiniteScrollingView stopAnimating];
                                                              });
                                                          } failure:^(NSError *error) {
+                                                             [weakSelf.tableView.infiniteScrollingView stopAnimating];
                                                              NSLog(@"error: %@", error);
                                                          }];
 
@@ -81,11 +83,11 @@ static NSString *const reuseCellIdentifier = @"HBChannelItemsViewCellID";
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (self.dataArray.count == 0) {
-        self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         return 0;
     }
     
-    self.tableView.separatorStyle = UITableViewCellSelectionStyleDefault;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     return self.dataArray.count;
 }
 
