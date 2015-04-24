@@ -44,15 +44,36 @@ static NSString *const reuseCellIdentifier = @"HBChannelItemsViewCellID";
                                                          } failure:^(NSError *error) {
                                                              NSLog(@"error: %@", error);
                                                          }];
-    
+    __weak typeof(self) weakSelf = self;
     [self.tableView addInfiniteScrollingWithActionHandler:^{
-        <#code#>
-    }]
+        [weakSelf loadMore];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Methods
+
+- (void)loadMore
+{
+    __weak typeof(self) weakSelf = self;
+    
+    NSInteger offset = weakSelf.dataArray.count ? ((HBChannelItem *)(weakSelf.dataArray.lastObject)).channelItemID : NSNotFound;
+    [[HBAPIManager sharedManager] fetchChannelItemsWithChannelID:self.channel.channelID
+                                                          offset:offset
+                                                           limit:kHBChannelItemsPerPage
+                                                         success:^(id responseObject) {
+                                                             [self.dataArray addObjectsFromArray:responseObject];
+                                                             dispatch_async(dispatch_get_main_queue(), ^{
+                                                                 [self.tableView reloadData];
+                                                             });
+                                                         } failure:^(NSError *error) {
+                                                             NSLog(@"error: %@", error);
+                                                         }];
+
 }
 
 #pragma mark - UITableViewDataSource
