@@ -2,23 +2,26 @@
 //  HBChannelItemsViewController.m
 //  Huaban-Channel
 //
-//  Created by jfl913 on 15/4/16.
+//  Created by jfl913 on 15/4/17.
 //  Copyright (c) 2015年 jfl913. All rights reserved.
 //
 
 #import "HBChannelItemsViewController.h"
+#import "HBChannelItemsViewCell.h"
 #import "HBAPIManager.h"
 #import "HBChannelItem.h"
-#import "HBChannelItemsViewCell.h"
-#import "HRToastManager.h"
+#import "UITableView+JFLayoutCell.h"
+#import <SVPullToRefresh.h>
+
+static NSString *const reuseCellIdentifier = @"HBChannelItemsViewCellID";
 
 #define kHBChannelItemsPerPage 20
 
-@interface HBChannelItemsViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface HBChannelItemsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 
 @end
 
@@ -27,8 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = self.channel.title;
-    self.dataArray = [@[] mutableCopy];
+    self.dataArray = @[].mutableCopy;
     [self.activityIndicatorView startAnimating];
     [[HBAPIManager sharedManager] fetchChannelItemsWithChannelID:self.channel.channelID
                                                           offset:NSNotFound
@@ -40,10 +42,12 @@
                                                                  [self.tableView reloadData];
                                                              });
                                                          } failure:^(NSError *error) {
-                                                             [self.activityIndicatorView stopAnimating];
-                                                             NSString *erroMessage = error.userInfo[@"message"];
-                                                             [HRToastManager showErrorMessage:erroMessage];
+                                                             NSLog(@"error: %@", error);
                                                          }];
+    
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        <#code#>
+    }]
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,25 +57,48 @@
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (self.dataArray.count == 0) {
-        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
         return 0;
     }
     
-    tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tableView.separatorStyle = UITableViewCellSelectionStyleDefault;
     return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HBChannelItemsViewCell *channelItemsViewCell = [tableView dequeueReusableCellWithIdentifier:@"HBChannelItemsViewCell" forIndexPath:indexPath];
-    HBChannelItem *channelItem = self.dataArray[indexPath.row];
-    channelItemsViewCell.channelItem = channelItem;
-    [channelItemsViewCell updateCell];
+    HBChannelItemsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseCellIdentifier];
+    cell.channelItem = self.dataArray[indexPath.row];
+    [cell updateCell];
+    return cell;
+}
+
+
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static HBChannelItemsViewCell *sizingCell = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sizingCell = [tableView dequeueReusableCellWithIdentifier:reuseCellIdentifier];
+    });
+
     
-    return channelItemsViewCell;
+    sizingCell.channelItem = self.dataArray[indexPath.row];
+    [sizingCell updateCell];
+    
+    sizingCell.bounds = CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), CGRectGetHeight(sizingCell.bounds));
+    // 配置完cell的内容后，再调用这两个方法，顺序不能反了，要不然cell高度计算就会错误
+    [sizingCell setNeedsLayout];
+    [sizingCell layoutIfNeeded];
+    
+    CGFloat rowHeight = [sizingCell heightForRow];
+    return rowHeight + 1;
 }
 
 /*

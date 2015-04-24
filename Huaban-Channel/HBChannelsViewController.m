@@ -229,15 +229,19 @@ static NSString *const zeroFollowingCellReuseIdentifier = @"ZeroFollowingCell";
 //    }
 //}
 
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    HBChannelItemsViewController *channelView = [self.storyboard instantiateViewControllerWithIdentifier:@"storyBoard"];
+//    [self.navigationController pushViewController:channelView animated:YES];
+//}
+
 #pragma mark - Navigate
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"channelItems"]) {
+        HBChannelItemsViewController *channelItemsViewController = segue.destinationViewController;
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        HBChannelItemsViewController *channelItemsViewController = (HBChannelItemsViewController *)segue.destinationViewController;
-        if (indexPath.section == 1) {
-            channelItemsViewController.channel = self.featuredChannels[indexPath.row];
-        }
+        channelItemsViewController.channel = self.featuredChannels[indexPath.row];
     }
 }
 

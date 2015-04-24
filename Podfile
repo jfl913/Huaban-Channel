@@ -5,10 +5,10 @@ target 'Huaban-Channel' do
 
 pod 'Mantle', '~> 1.5.4'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
-#pod 'SDWebImage', '~>3.6'
 pod 'Masonry'
-pod 'SVPullToRefresh'
+pod 'SVPullToRefresh', :git => 'https://github.com/jfl913/SVPullToRefresh'
 pod 'SVProgressHUD'
+pod 'Masonry'
 
 end
 

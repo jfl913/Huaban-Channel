@@ -15,7 +15,10 @@
 		010B854A1AA1778000373456 /* Huaban_ChannelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 010B85491AA1778000373456 /* Huaban_ChannelTests.m */; };
 		010F34C01AA414AF008140EB /* HBFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F34BF1AA414AF008140EB /* HBFile.m */; };
 		010F34C31AA44E17008140EB /* JFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F34C21AA44E17008140EB /* JFHTTPSessionManager.m */; };
+		011DBAA41AE4E3DE007C743D /* UITableView+JFLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 011DBAA31AE4E3DE007C743D /* UITableView+JFLayoutCell.m */; };
 		011E04BA1AA8361100805E65 /* JFWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 011E04B91AA8361100805E65 /* JFWebImageManager.m */; };
+		014061D61AE110EB00613409 /* HBChannelItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 014061D51AE110EB00613409 /* HBChannelItemsViewController.m */; };
+		014061D91AE111A800613409 /* HBChannelItemsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 014061D81AE111A800613409 /* HBChannelItemsViewCell.m */; };
 		0149334B1AA408980048A388 /* HBChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0149334A1AA408980048A388 /* HBChannel.m */; };
 		016AB88E1AB28CDF00FEF653 /* JFImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 016AB88D1AB28CDF00FEF653 /* JFImageCache.m */; };
 		0175A0EB1AA83B5400DDA2A0 /* UIImageView+JFWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0175A0EA1AA83B5400DDA2A0 /* UIImageView+JFWebCache.m */; };
@@ -23,8 +26,6 @@
 		017F89581AA58E90005A8C8D /* HBChannelsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 017F89571AA58E90005A8C8D /* HBChannelsViewCell.m */; };
 		01A23F3F1AB03F9400956E95 /* JFWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A23F3E1AB03F9400956E95 /* JFWebImageDownloader.m */; };
 		01A23F421AB047F400956E95 /* JFWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A23F411AB047F400956E95 /* JFWebImageDownloaderOperation.m */; };
-		01BBF48A1ADF4D0D0046DA88 /* HBChannelItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BBF4891ADF4D0D0046DA88 /* HBChannelItemsViewController.m */; };
-		01BBF4BF1ADF6C350046DA88 /* HBChannelItemsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BBF4BE1ADF6C350046DA88 /* HBChannelItemsViewCell.m */; };
 		01BBF4C21ADF96D40046DA88 /* HRToastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BBF4C11ADF96D40046DA88 /* HRToastManager.m */; };
 		01E9B95D1AA48521000FE7D5 /* HBAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E9B95C1AA48521000FE7D5 /* HBAPIManager.m */; };
 		01FEE0AA1ADCEFB100B72A72 /* HBChannelItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FEE0A91ADCEFB100B72A72 /* HBChannelItem.m */; };
@@ -59,8 +60,14 @@
 		010F34BF1AA414AF008140EB /* HBFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBFile.m; sourceTree = "<group>"; };
 		010F34C11AA44E17008140EB /* JFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFHTTPSessionManager.h; sourceTree = "<group>"; };
 		010F34C21AA44E17008140EB /* JFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFHTTPSessionManager.m; sourceTree = "<group>"; };
+		011DBAA21AE4E3DE007C743D /* UITableView+JFLayoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+JFLayoutCell.h"; sourceTree = "<group>"; };
+		011DBAA31AE4E3DE007C743D /* UITableView+JFLayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+JFLayoutCell.m"; sourceTree = "<group>"; };
 		011E04B81AA8361100805E65 /* JFWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWebImageManager.h; sourceTree = "<group>"; };
 		011E04B91AA8361100805E65 /* JFWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWebImageManager.m; sourceTree = "<group>"; };
+		014061D41AE110EB00613409 /* HBChannelItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBChannelItemsViewController.h; sourceTree = "<group>"; };
+		014061D51AE110EB00613409 /* HBChannelItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBChannelItemsViewController.m; sourceTree = "<group>"; };
+		014061D71AE111A800613409 /* HBChannelItemsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBChannelItemsViewCell.h; sourceTree = "<group>"; };
+		014061D81AE111A800613409 /* HBChannelItemsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBChannelItemsViewCell.m; sourceTree = "<group>"; };
 		014933491AA408980048A388 /* HBChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBChannel.h; sourceTree = "<group>"; };
 		0149334A1AA408980048A388 /* HBChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBChannel.m; sourceTree = "<group>"; };
 		016AB88C1AB28CDF00FEF653 /* JFImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFImageCache.h; sourceTree = "<group>"; };
@@ -76,10 +83,6 @@
 		01A23F3E1AB03F9400956E95 /* JFWebImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWebImageDownloader.m; sourceTree = "<group>"; };
 		01A23F401AB047F400956E95 /* JFWebImageDownloaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWebImageDownloaderOperation.h; sourceTree = "<group>"; };
 		01A23F411AB047F400956E95 /* JFWebImageDownloaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWebImageDownloaderOperation.m; sourceTree = "<group>"; };
-		01BBF4881ADF4D0D0046DA88 /* HBChannelItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBChannelItemsViewController.h; sourceTree = "<group>"; };
-		01BBF4891ADF4D0D0046DA88 /* HBChannelItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBChannelItemsViewController.m; sourceTree = "<group>"; };
-		01BBF4BD1ADF6C350046DA88 /* HBChannelItemsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBChannelItemsViewCell.h; sourceTree = "<group>"; };
-		01BBF4BE1ADF6C350046DA88 /* HBChannelItemsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBChannelItemsViewCell.m; sourceTree = "<group>"; };
 		01BBF4C01ADF96D40046DA88 /* HRToastManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRToastManager.h; path = "../../her-ios/her/HRToastManager.h"; sourceTree = "<group>"; };
 		01BBF4C11ADF96D40046DA88 /* HRToastManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRToastManager.m; path = "../../her-ios/her/HRToastManager.m"; sourceTree = "<group>"; };
 		01E2554E1AC10D690054D906 /* JFWebImageMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFWebImageMacro.h; sourceTree = "<group>"; };
@@ -139,6 +142,7 @@
 		010B852C1AA1777F00373456 /* Huaban-Channel */ = {
 			isa = PBXGroup;
 			children = (
+				011DBA9E1AE4C89E007C743D /* Category */,
 				01BBF4C31ADF96E80046DA88 /* Helper */,
 				011E04B71AA8359E00805E65 /* JFWebImage */,
 				010B85541AA1BA9900373456 /* HBChannelAPI */,
@@ -210,6 +214,15 @@
 			name = HBChannelAPI;
 			sourceTree = "<group>";
 		};
+		011DBA9E1AE4C89E007C743D /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				011DBAA21AE4E3DE007C743D /* UITableView+JFLayoutCell.h */,
+				011DBAA31AE4E3DE007C743D /* UITableView+JFLayoutCell.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
 		011E04B71AA8359E00805E65 /* JFWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,10 +245,10 @@
 		01256F131AD3E37400620711 /* HBChannelItemsViewController */ = {
 			isa = PBXGroup;
 			children = (
-				01BBF4881ADF4D0D0046DA88 /* HBChannelItemsViewController.h */,
-				01BBF4891ADF4D0D0046DA88 /* HBChannelItemsViewController.m */,
-				01BBF4BD1ADF6C350046DA88 /* HBChannelItemsViewCell.h */,
-				01BBF4BE1ADF6C350046DA88 /* HBChannelItemsViewCell.m */,
+				014061D41AE110EB00613409 /* HBChannelItemsViewController.h */,
+				014061D51AE110EB00613409 /* HBChannelItemsViewController.m */,
+				014061D71AE111A800613409 /* HBChannelItemsViewCell.h */,
+				014061D81AE111A800613409 /* HBChannelItemsViewCell.m */,
 			);
 			name = HBChannelItemsViewController;
 			sourceTree = "<group>";
@@ -417,11 +430,12 @@
 				01E9B95D1AA48521000FE7D5 /* HBAPIManager.m in Sources */,
 				017F89551AA566C9005A8C8D /* HBChannelsViewController.m in Sources */,
 				01FEE0AD1ADCF0E700B72A72 /* HBUser.m in Sources */,
-				01BBF4BF1ADF6C350046DA88 /* HBChannelItemsViewCell.m in Sources */,
 				0149334B1AA408980048A388 /* HBChannel.m in Sources */,
 				010F34C01AA414AF008140EB /* HBFile.m in Sources */,
 				01FEE0AA1ADCEFB100B72A72 /* HBChannelItem.m in Sources */,
 				011E04BA1AA8361100805E65 /* JFWebImageManager.m in Sources */,
+				014061D91AE111A800613409 /* HBChannelItemsViewCell.m in Sources */,
+				011DBAA41AE4E3DE007C743D /* UITableView+JFLayoutCell.m in Sources */,
 				010B85331AA1777F00373456 /* AppDelegate.m in Sources */,
 				01A23F421AB047F400956E95 /* JFWebImageDownloaderOperation.m in Sources */,
 				010F34C31AA44E17008140EB /* JFHTTPSessionManager.m in Sources */,
@@ -430,7 +444,7 @@
 				0175A0EB1AA83B5400DDA2A0 /* UIImageView+JFWebCache.m in Sources */,
 				01FEE0B01ADCF76300B72A72 /* HBAvatar.m in Sources */,
 				010B85301AA1777F00373456 /* main.m in Sources */,
-				01BBF48A1ADF4D0D0046DA88 /* HBChannelItemsViewController.m in Sources */,
+				014061D61AE110EB00613409 /* HBChannelItemsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
