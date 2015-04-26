@@ -75,6 +75,7 @@ static NSString *const zeroFollowingCellReuseIdentifier = @"ZeroFollowingCell";
             [self.refreshControl endRefreshing];
         });
     } failure:^(NSError *error) {
+        [self.refreshControl endRefreshing];
         NSLog(@"error: %@", error);
     }];
 }

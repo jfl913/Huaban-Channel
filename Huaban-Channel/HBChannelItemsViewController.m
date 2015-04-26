@@ -12,6 +12,7 @@
 #import "HBChannelItem.h"
 #import "UITableView+JFLayoutCell.h"
 #import <SVPullToRefresh.h>
+#import <Masonry.h>
 
 static NSString *const reuseCellIdentifier = @"HBChannelItemsViewCellID";
 
@@ -22,6 +23,7 @@ static NSString *const reuseCellIdentifier = @"HBChannelItemsViewCellID";
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -38,12 +40,26 @@ static NSString *const reuseCellIdentifier = @"HBChannelItemsViewCellID";
                                                          success:^(id responseObject) {
                                                              [self.dataArray addObjectsFromArray:responseObject];
                                                              dispatch_async(dispatch_get_main_queue(), ^{
+                                                                 if (((NSArray *)responseObject).count < kHBChannelItemsPerPage) {
+                                                                     [self setupTableFooterView];
+                                                                 }else{
+                                                                     self.tableView.tableFooterView = nil;
+                                                                 }
+
                                                                  [self.activityIndicatorView stopAnimating];
                                                                  [self.tableView reloadData];
                                                              });
                                                          } failure:^(NSError *error) {
                                                              NSLog(@"error: %@", error);
                                                          }];
+    UITableViewController *tableViewController = [[UITableViewController alloc] init];
+    tableViewController.tableView = self.tableView;
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(handleRefresh) forControlEvents:UIControlEventValueChanged];
+    tableViewController.refreshControl = self.refreshControl;
+    
+    
     __weak typeof(self) weakSelf = self;
     [self.tableView addInfiniteScrollingWithActionHandler:^{
         [weakSelf loadMore];
@@ -57,6 +73,28 @@ static NSString *const reuseCellIdentifier = @"HBChannelItemsViewCellID";
 
 #pragma mark - Methods
 
+- (void)handleRefresh
+{
+    [[HBAPIManager sharedManager] fetchChannelItemsWithChannelID:self.channel.channelID
+                                                          offset:NSNotFound
+                                                           limit:kHBChannelItemsPerPage
+                                                         success:^(id responseObject) {
+                                                             [self.dataArray addObjectsFromArray:responseObject];
+                                                             dispatch_async(dispatch_get_main_queue(), ^{
+                                                                 if (((NSArray *)responseObject).count < kHBChannelItemsPerPage) {
+                                                                     [self setupTableFooterView];
+                                                                 }else{
+                                                                     self.tableView.tableFooterView = nil;
+                                                                 }
+                                                                 [self.refreshControl endRefreshing];
+                                                                 [self.tableView reloadData];
+                                                             });
+                                                         } failure:^(NSError *error) {
+                                                             [self.refreshControl endRefreshing];
+                                                             NSLog(@"error: %@", error);
+                                                         }];
+}
+
 - (void)loadMore
 {
     __weak typeof(self) weakSelf = self;
@@ -68,6 +106,11 @@ static NSString *const reuseCellIdentifier = @"HBChannelItemsViewCellID";
                                                          success:^(id responseObject) {
                                                              [weakSelf.dataArray addObjectsFromArray:responseObject];
                                                              dispatch_async(dispatch_get_main_queue(), ^{
+                                                                 if (((NSArray *)responseObject).count < kHBChannelItemsPerPage) {
+                                                                     [weakSelf setupTableFooterView];
+                                                                 }else{
+                                                                     weakSelf.tableView.tableFooterView = nil;
+                                                                 }
                                                                  [weakSelf.tableView reloadData];
                                                                  [weakSelf.tableView.infiniteScrollingView stopAnimating];
                                                              });
@@ -77,6 +120,27 @@ static NSString *const reuseCellIdentifier = @"HBChannelItemsViewCellID";
                                                          }];
 
 }
+
+- (void)setupTableFooterView
+{
+    // 一开始就要设置好view的frame，如果用下面的autolayout来设置view的width，height，tableFooterView只有往上拖才会显示，一松手就又弹回去隐藏住了
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
+    view.backgroundColor = [UIColor lightGrayColor];
+    
+    UILabel *label = [UILabel new];
+    label.text = @"没有更多了";
+    label.textColor = [UIColor blackColor];
+    label.font = [UIFont systemFontOfSize:12];
+    [view addSubview:label];
+    
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(view.mas_centerX);
+        make.centerY.equalTo(view.mas_centerY);
+    }];
+    
+    self.tableView.tableFooterView = view;
+}
+
 
 #pragma mark - UITableViewDataSource
 
@@ -98,8 +162,6 @@ static NSString *const reuseCellIdentifier = @"HBChannelItemsViewCellID";
     [cell updateCell];
     return cell;
 }
-
-
 
 #pragma mark - UITableViewDelegate
 
