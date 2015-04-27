@@ -122,13 +122,37 @@ static NSString *const reuseCellIdentifier = @"HBChannelItemsViewCellID";
 }
 - (IBAction)followItemTapped:(id)sender
 {
-    [[HBAPIManager sharedManager] loginWithUsername:@"jfl913@163.com"
-                                           password:@"jfl913"
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"花瓣"
+                                                                             message:@"登录"
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"用户名";
+        textField.bounds = CGRectMake(textField.bounds.origin.x, textField.bounds.origin.y, textField.bounds.size.width, 44);
+    }];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"密码";
+    }];
+    UIAlertAction *loginAction = [UIAlertAction actionWithTitle:@"登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        NSString *username = ((UITextField *)alertController.textFields.firstObject).text;
+        NSString *password = ((UITextField *)alertController.textFields.lastObject).text;
+        [self loginWithUsername:username password:password];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alertController addAction:loginAction];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password
+{
+    [[HBAPIManager sharedManager] loginWithUsername:username
+                                           password:password
                                             success:^(id responseObject) {
                                                 NSLog(@"login: %@", responseObject);
                                             } failure:^(NSError *error) {
                                                 NSLog(@"error: %@", error);
                                             }];
+
 }
 
 - (void)setupTableFooterView
