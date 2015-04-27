@@ -10,6 +10,7 @@
 #import <Masonry.h>
 #import "UIImageView+JFWebCache.h"
 #import <Masonry.h>
+#import "NSDate+JFToNow.h"
 
 #define ScreenWidth     [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight    [UIScreen mainScreen].bounds.size.height
@@ -45,7 +46,9 @@
 {
     [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:[self.channelItem.user avatarURLWithHeight:140]]];
     self.usernameLabel.text = self.channelItem.user.username;
-    self.timeLabel.text = [NSString stringWithFormat:@"%ld", (long)self.channelItem.createdAt];
+    
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:self.channelItem.createdAt];
+    self.timeLabel.text = [date jf_toNow];
     
     if (self.channelItem.file) {
         CGFloat imageHeight = [self imageHeightWithFile:self.channelItem.file];

@@ -15,6 +15,7 @@
 		010B854A1AA1778000373456 /* Huaban_ChannelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 010B85491AA1778000373456 /* Huaban_ChannelTests.m */; };
 		010F34C01AA414AF008140EB /* HBFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F34BF1AA414AF008140EB /* HBFile.m */; };
 		010F34C31AA44E17008140EB /* JFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F34C21AA44E17008140EB /* JFHTTPSessionManager.m */; };
+		01199D5E1AEDD447009CFB11 /* NSDate+JFToNow.m in Sources */ = {isa = PBXBuildFile; fileRef = 01199D5D1AEDD447009CFB11 /* NSDate+JFToNow.m */; };
 		011DBAA41AE4E3DE007C743D /* UITableView+JFLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 011DBAA31AE4E3DE007C743D /* UITableView+JFLayoutCell.m */; };
 		011E04BA1AA8361100805E65 /* JFWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 011E04B91AA8361100805E65 /* JFWebImageManager.m */; };
 		014061D61AE110EB00613409 /* HBChannelItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 014061D51AE110EB00613409 /* HBChannelItemsViewController.m */; };
@@ -60,6 +61,8 @@
 		010F34BF1AA414AF008140EB /* HBFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBFile.m; sourceTree = "<group>"; };
 		010F34C11AA44E17008140EB /* JFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFHTTPSessionManager.h; sourceTree = "<group>"; };
 		010F34C21AA44E17008140EB /* JFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFHTTPSessionManager.m; sourceTree = "<group>"; };
+		01199D5C1AEDD447009CFB11 /* NSDate+JFToNow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JFToNow.h"; sourceTree = "<group>"; };
+		01199D5D1AEDD447009CFB11 /* NSDate+JFToNow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JFToNow.m"; sourceTree = "<group>"; };
 		011DBAA21AE4E3DE007C743D /* UITableView+JFLayoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+JFLayoutCell.h"; sourceTree = "<group>"; };
 		011DBAA31AE4E3DE007C743D /* UITableView+JFLayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+JFLayoutCell.m"; sourceTree = "<group>"; };
 		011E04B81AA8361100805E65 /* JFWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWebImageManager.h; sourceTree = "<group>"; };
@@ -219,6 +222,8 @@
 			children = (
 				011DBAA21AE4E3DE007C743D /* UITableView+JFLayoutCell.h */,
 				011DBAA31AE4E3DE007C743D /* UITableView+JFLayoutCell.m */,
+				01199D5C1AEDD447009CFB11 /* NSDate+JFToNow.h */,
+				01199D5D1AEDD447009CFB11 /* NSDate+JFToNow.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -432,6 +437,7 @@
 				01FEE0AD1ADCF0E700B72A72 /* HBUser.m in Sources */,
 				0149334B1AA408980048A388 /* HBChannel.m in Sources */,
 				010F34C01AA414AF008140EB /* HBFile.m in Sources */,
+				01199D5E1AEDD447009CFB11 /* NSDate+JFToNow.m in Sources */,
 				01FEE0AA1ADCEFB100B72A72 /* HBChannelItem.m in Sources */,
 				011E04BA1AA8361100805E65 /* JFWebImageManager.m in Sources */,
 				014061D91AE111A800613409 /* HBChannelItemsViewCell.m in Sources */,
