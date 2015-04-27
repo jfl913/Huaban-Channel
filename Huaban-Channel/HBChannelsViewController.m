@@ -241,8 +241,13 @@ static NSString *const zeroFollowingCellReuseIdentifier = @"ZeroFollowingCell";
 {
     if ([segue.identifier isEqualToString:@"channelItems"]) {
         HBChannelItemsViewController *channelItemsViewController = segue.destinationViewController;
+        
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        channelItemsViewController.channel = self.featuredChannels[indexPath.row];
+        HBChannel *channel = self.featuredChannels[indexPath.row];
+        channelItemsViewController.channel = channel;
+        channelItemsViewController.title = channel.title;
+        
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 

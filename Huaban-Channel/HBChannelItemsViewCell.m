@@ -30,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *itemImageViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *itemImageViewBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *descriptionLabelBottomConstraint;
 
 @end
 
@@ -48,9 +50,17 @@
     if (self.channelItem.file) {
         CGFloat imageHeight = [self imageHeightWithFile:self.channelItem.file];
         self.itemImageViewHeightConstraint.constant = imageHeight;
+        self.itemImageViewBottomConstraint.constant = kSpace;
         [self.itemImageView sd_setImageWithURL:[NSURL URLWithString:[self.channelItem imageURLWithWidth:640 isSquare:NO]]];
     }else{
         self.itemImageViewHeightConstraint.constant = 0;
+        self.itemImageViewBottomConstraint.constant = 0;
+    }
+    
+    if (self.channelItem.text.length == 0) {
+        self.descriptionLabelBottomConstraint.constant = 0;
+    }else{
+        self.descriptionLabelBottomConstraint.constant = kSpace;
     }
     
     self.descriptionLabel.text = self.channelItem.text;

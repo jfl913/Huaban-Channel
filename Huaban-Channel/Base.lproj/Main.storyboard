@@ -252,24 +252,20 @@
                                                 <constraint firstItem="SNj-2C-Nm5" firstAttribute="top" secondItem="MsQ-Lc-3Tp" secondAttribute="bottom" constant="10" id="PiY-Qz-rtu"/>
                                                 <constraint firstItem="MsQ-Lc-3Tp" firstAttribute="top" secondItem="Zy1-Uc-wYP" secondAttribute="bottom" constant="10" id="X8R-oB-FT9"/>
                                                 <constraint firstItem="2as-wq-fiV" firstAttribute="top" secondItem="eKY-cz-tgd" secondAttribute="top" id="aIg-UU-rVa"/>
-                                                <constraint firstAttribute="trailing" secondItem="MsQ-Lc-3Tp" secondAttribute="trailing" constant="10" id="b57-uV-BO0"/>
                                                 <constraint firstAttribute="trailing" secondItem="SNj-2C-Nm5" secondAttribute="trailing" id="hq4-Ts-9hc"/>
                                                 <constraint firstAttribute="trailing" secondItem="2as-wq-fiV" secondAttribute="trailing" id="j9S-jc-485"/>
                                                 <constraint firstAttribute="trailing" secondItem="Zy1-Uc-wYP" secondAttribute="trailing" id="tU9-Kv-SG7"/>
                                                 <constraint firstItem="2as-wq-fiV" firstAttribute="leading" secondItem="eKY-cz-tgd" secondAttribute="leading" id="xF6-m4-L1G"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="b57-uV-BO0"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="avatarImageView" destination="gU7-Wj-bu4" id="MzT-uS-8Ew"/>
                                             <outlet property="bottomView" destination="SNj-2C-Nm5" id="uiv-Wi-cg9"/>
                                             <outlet property="commentCountLabel" destination="jwv-53-0x2" id="Yhs-3G-F0o"/>
                                             <outlet property="descriptionLabel" destination="MsQ-Lc-3Tp" id="IeW-wj-YB9"/>
+                                            <outlet property="descriptionLabelBottomConstraint" destination="PiY-Qz-rtu" id="Gk1-zX-2ef"/>
                                             <outlet property="itemImageView" destination="Zy1-Uc-wYP" id="J9I-17-7Vs"/>
+                                            <outlet property="itemImageViewBottomConstraint" destination="X8R-oB-FT9" id="P5l-Cu-DQE"/>
                                             <outlet property="itemImageViewHeightConstraint" destination="rcH-VJ-8gb" id="fw5-fG-Xyd"/>
                                             <outlet property="likeCountLabel" destination="aJK-FT-eKS" id="oaF-iV-14O"/>
                                             <outlet property="timeLabel" destination="nTy-aS-inF" id="eLf-jV-WVd"/>
