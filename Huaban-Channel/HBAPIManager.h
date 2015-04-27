@@ -12,6 +12,10 @@
 
 + (instancetype)sharedManager;
 
+@end
+
+@interface HBAPIManager (Channel)
+
 - (void)fetchFeaturedChannelsWithOffset:(NSInteger)offset
                                   limit:(NSInteger)limit
                                 success:(void (^)(id responseObject))success
@@ -22,5 +26,14 @@
                                  limit:(NSInteger)limit
                                success:(void (^)(id responseObject))success
                                failure:(void (^)(NSError *error))failure;
+
+@end
+
+@interface HBAPIManager (Account)
+
+- (void)loginWithUsername:(NSString *)username
+                 password:(NSString *)password
+                  success:(void (^)(id responseObject))success
+                  failure:(void (^)(NSError *error))failure;
 
 @end

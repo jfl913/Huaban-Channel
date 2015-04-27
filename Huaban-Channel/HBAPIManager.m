@@ -9,6 +9,9 @@
 #import "HBAPIManager.h"
 #import "HBChannelAPI.h"
 
+#define kHBAPIKey @"993743d208ae49288837"
+#define kHBAPISecret @"11cbe841e0bf42f9be0c8f6d3ee327ec"
+
 static NSString *API_SERVER = @"https://api.huaban.com";
 
 typedef void(^JFSuccessBlock)(NSURLSessionDataTask *task, id responseObject);
@@ -22,43 +25,10 @@ typedef void(^JFFailureBlock)(NSURLSessionDataTask *task, NSError *error);
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         manager = [[HBAPIManager alloc] initWithBaseURL:[NSURL URLWithString:API_SERVER]];
+        [manager setClientID:kHBAPIKey andClientSecret:kHBAPISecret];
     });
     
     return manager;
-}
-
-- (void)fetchFeaturedChannelsWithOffset:(NSInteger)offset
-                                  limit:(NSInteger)limit
-                                success:(void (^)(id responseObject))success
-                                failure:(void (^)(NSError *error))failure
-{
-    NSString *max = offset != NSNotFound ? [NSString stringWithFormat:@"&max=%ld", (long)offset] : @"";
-    NSString *path = [NSString stringWithFormat:@"/mobile_topics/featured?limit=%ld%@", (long)limit, max];
-    
-    [self requestWithMethod:@"GET"
-                      relativePath:path
-                        parameters:nil
-                       resultClass:[HBChannel class]
-                           listKey:@"topics"
-                           success:success
-                           failure:failure];
-}
-
-- (void)fetchChannelItemsWithChannelID:(NSInteger)channelID
-                                offset:(NSInteger)offset
-                                 limit:(NSInteger)limit
-                               success:(void (^)(id responseObject))success
-                               failure:(void (^)(NSError *error))failure
-{
-    NSString *max = offset != NSNotFound ? [NSString stringWithFormat:@"&max=%ld", (long)offset] : @"";
-    NSString *path = [NSString stringWithFormat:@"/mobile_topics/%ld/posts?limit=%ld%@", (long)channelID, (long)limit, max];
-    [self requestWithMethod:@"GET"
-               relativePath:path
-                 parameters:nil
-                resultClass:[HBChannelItem class]
-                    listKey:@"posts"
-                    success:success
-                    failure:failure];
 }
 
 - (void)requestWithMethod:(NSString *)method
@@ -86,6 +56,11 @@ typedef void(^JFFailureBlock)(NSURLSessionDataTask *task, NSError *error);
                     success(model);
                 }
             }
+        }else{
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                MTLModel *model = [MTLJSONAdapter modelOfClass:resultClass fromJSONDictionary:responseObject error:nil];
+                success(model);
+            }
         }
     };
     
@@ -102,6 +77,74 @@ typedef void(^JFFailureBlock)(NSURLSessionDataTask *task, NSError *error);
           success:jfSuccessBlock
           failure:jfFailureBlock];
     }
+    
+    if ([method isEqualToString:@"POST"]) {
+        [self POST:relativePath
+        parameters:parameters
+           success:jfSuccessBlock
+           failure:jfFailureBlock];
+    }
+}
+
+@end
+
+@implementation HBAPIManager (Channel)
+
+- (void)fetchFeaturedChannelsWithOffset:(NSInteger)offset
+                                  limit:(NSInteger)limit
+                                success:(void (^)(id responseObject))success
+                                failure:(void (^)(NSError *error))failure
+{
+    NSString *max = offset != NSNotFound ? [NSString stringWithFormat:@"&max=%ld", (long)offset] : @"";
+    NSString *path = [NSString stringWithFormat:@"/mobile_topics/featured?limit=%ld%@", (long)limit, max];
+    
+    [self requestWithMethod:@"GET"
+               relativePath:path
+                 parameters:nil
+                resultClass:[HBChannel class]
+                    listKey:@"topics"
+                    success:success
+                    failure:failure];
+}
+
+- (void)fetchChannelItemsWithChannelID:(NSInteger)channelID
+                                offset:(NSInteger)offset
+                                 limit:(NSInteger)limit
+                               success:(void (^)(id responseObject))success
+                               failure:(void (^)(NSError *error))failure
+{
+    NSString *max = offset != NSNotFound ? [NSString stringWithFormat:@"&max=%ld", (long)offset] : @"";
+    NSString *path = [NSString stringWithFormat:@"/mobile_topics/%ld/posts?limit=%ld%@", (long)channelID, (long)limit, max];
+    [self requestWithMethod:@"GET"
+               relativePath:path
+                 parameters:nil
+                resultClass:[HBChannelItem class]
+                    listKey:@"posts"
+                    success:success
+                    failure:failure];
+}
+
+@end
+
+@implementation HBAPIManager (Account)
+
+- (void)loginWithUsername:(NSString *)username
+                 password:(NSString *)password
+                  success:(void (^)(id responseObject))success
+                  failure:(void (^)(NSError *error))failure
+{
+    NSDictionary *parameters = @{
+                                 @"grant_type": @"password",
+                                 @"username": username,
+                                 @"password": password,
+                                 };
+    [self requestWithMethod:@"POST"
+               relativePath:@"oauth/access_token"
+                 parameters:parameters
+                resultClass:[HBAccessToken class]
+                    listKey:nil
+                    success:success
+                    failure:failure];
 }
 
 @end

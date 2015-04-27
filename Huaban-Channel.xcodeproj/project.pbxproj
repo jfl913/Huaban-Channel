@@ -16,6 +16,7 @@
 		010F34C01AA414AF008140EB /* HBFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F34BF1AA414AF008140EB /* HBFile.m */; };
 		010F34C31AA44E17008140EB /* JFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F34C21AA44E17008140EB /* JFHTTPSessionManager.m */; };
 		01199D5E1AEDD447009CFB11 /* NSDate+JFToNow.m in Sources */ = {isa = PBXBuildFile; fileRef = 01199D5D1AEDD447009CFB11 /* NSDate+JFToNow.m */; };
+		01199D611AEE2E1F009CFB11 /* NSString+Base64Encode.m in Sources */ = {isa = PBXBuildFile; fileRef = 01199D601AEE2E1F009CFB11 /* NSString+Base64Encode.m */; };
 		011DBAA41AE4E3DE007C743D /* UITableView+JFLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 011DBAA31AE4E3DE007C743D /* UITableView+JFLayoutCell.m */; };
 		011E04BA1AA8361100805E65 /* JFWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 011E04B91AA8361100805E65 /* JFWebImageManager.m */; };
 		014061D61AE110EB00613409 /* HBChannelItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 014061D51AE110EB00613409 /* HBChannelItemsViewController.m */; };
@@ -27,6 +28,7 @@
 		017F89581AA58E90005A8C8D /* HBChannelsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 017F89571AA58E90005A8C8D /* HBChannelsViewCell.m */; };
 		01A23F3F1AB03F9400956E95 /* JFWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A23F3E1AB03F9400956E95 /* JFWebImageDownloader.m */; };
 		01A23F421AB047F400956E95 /* JFWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A23F411AB047F400956E95 /* JFWebImageDownloaderOperation.m */; };
+		01B9FC161AEE4003005201D5 /* HBAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B9FC151AEE4003005201D5 /* HBAccessToken.m */; };
 		01BBF4C21ADF96D40046DA88 /* HRToastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BBF4C11ADF96D40046DA88 /* HRToastManager.m */; };
 		01E9B95D1AA48521000FE7D5 /* HBAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E9B95C1AA48521000FE7D5 /* HBAPIManager.m */; };
 		01FEE0AA1ADCEFB100B72A72 /* HBChannelItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FEE0A91ADCEFB100B72A72 /* HBChannelItem.m */; };
@@ -63,6 +65,8 @@
 		010F34C21AA44E17008140EB /* JFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFHTTPSessionManager.m; sourceTree = "<group>"; };
 		01199D5C1AEDD447009CFB11 /* NSDate+JFToNow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JFToNow.h"; sourceTree = "<group>"; };
 		01199D5D1AEDD447009CFB11 /* NSDate+JFToNow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JFToNow.m"; sourceTree = "<group>"; };
+		01199D5F1AEE2E1F009CFB11 /* NSString+Base64Encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64Encode.h"; sourceTree = "<group>"; };
+		01199D601AEE2E1F009CFB11 /* NSString+Base64Encode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64Encode.m"; sourceTree = "<group>"; };
 		011DBAA21AE4E3DE007C743D /* UITableView+JFLayoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+JFLayoutCell.h"; sourceTree = "<group>"; };
 		011DBAA31AE4E3DE007C743D /* UITableView+JFLayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+JFLayoutCell.m"; sourceTree = "<group>"; };
 		011E04B81AA8361100805E65 /* JFWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWebImageManager.h; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 		01A23F3E1AB03F9400956E95 /* JFWebImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWebImageDownloader.m; sourceTree = "<group>"; };
 		01A23F401AB047F400956E95 /* JFWebImageDownloaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWebImageDownloaderOperation.h; sourceTree = "<group>"; };
 		01A23F411AB047F400956E95 /* JFWebImageDownloaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWebImageDownloaderOperation.m; sourceTree = "<group>"; };
+		01B9FC141AEE4003005201D5 /* HBAccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBAccessToken.h; sourceTree = "<group>"; };
+		01B9FC151AEE4003005201D5 /* HBAccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBAccessToken.m; sourceTree = "<group>"; };
 		01BBF4C01ADF96D40046DA88 /* HRToastManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRToastManager.h; path = "../../her-ios/her/HRToastManager.h"; sourceTree = "<group>"; };
 		01BBF4C11ADF96D40046DA88 /* HRToastManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRToastManager.m; path = "../../her-ios/her/HRToastManager.m"; sourceTree = "<group>"; };
 		01E2554E1AC10D690054D906 /* JFWebImageMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFWebImageMacro.h; sourceTree = "<group>"; };
@@ -213,6 +219,8 @@
 				01FEE0AC1ADCF0E700B72A72 /* HBUser.m */,
 				01FEE0AE1ADCF76300B72A72 /* HBAvatar.h */,
 				01FEE0AF1ADCF76300B72A72 /* HBAvatar.m */,
+				01B9FC141AEE4003005201D5 /* HBAccessToken.h */,
+				01B9FC151AEE4003005201D5 /* HBAccessToken.m */,
 			);
 			name = HBChannelAPI;
 			sourceTree = "<group>";
@@ -224,6 +232,8 @@
 				011DBAA31AE4E3DE007C743D /* UITableView+JFLayoutCell.m */,
 				01199D5C1AEDD447009CFB11 /* NSDate+JFToNow.h */,
 				01199D5D1AEDD447009CFB11 /* NSDate+JFToNow.m */,
+				01199D5F1AEE2E1F009CFB11 /* NSString+Base64Encode.h */,
+				01199D601AEE2E1F009CFB11 /* NSString+Base64Encode.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -434,6 +444,8 @@
 				016AB88E1AB28CDF00FEF653 /* JFImageCache.m in Sources */,
 				01E9B95D1AA48521000FE7D5 /* HBAPIManager.m in Sources */,
 				017F89551AA566C9005A8C8D /* HBChannelsViewController.m in Sources */,
+				01B9FC161AEE4003005201D5 /* HBAccessToken.m in Sources */,
+				01199D611AEE2E1F009CFB11 /* NSString+Base64Encode.m in Sources */,
 				01FEE0AD1ADCF0E700B72A72 /* HBUser.m in Sources */,
 				0149334B1AA408980048A388 /* HBChannel.m in Sources */,
 				010F34C01AA414AF008140EB /* HBFile.m in Sources */,

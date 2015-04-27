@@ -14,9 +14,16 @@
 
 - (instancetype)initWithBaseURL:(NSURL *)url;
 
+- (void)setClientID:(NSString *)clientID andClientSecret:(NSString *)clientSecret;
+
 - (NSURLSessionDataTask *)GET:(NSString *)URLString
                    parameters:(id)parameters
                       success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                       failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
+
+- (NSURLSessionDataTask *)POST:(NSString *)URLString
+                    parameters:(NSDictionary *)parameters
+                       success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                       failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
 
 @end

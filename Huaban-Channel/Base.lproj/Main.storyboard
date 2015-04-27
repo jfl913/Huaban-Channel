@@ -97,7 +97,7 @@
             </objects>
             <point key="canvasLocation" x="2055" y="135"/>
         </scene>
-        <!--Channel Items View Controller-->
+        <!--Title-->
         <scene sceneID="Qq6-Xn-kht">
             <objects>
                 <viewController id="7pF-fC-InR" customClass="HBChannelItemsViewController" sceneMemberID="viewController">
@@ -298,6 +298,13 @@
                             <constraint firstItem="DTh-E2-KOO" firstAttribute="top" secondItem="7E0-K9-RWy" secondAttribute="top" id="Zsf-NN-MwU"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="bRe-Rs-8ZD">
+                        <barButtonItem key="rightBarButtonItem" title="登录" id="TT6-cV-Dtb">
+                            <connections>
+                                <action selector="followItemTapped:" destination="7pF-fC-InR" id="KRm-aY-L8n"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicatorView" destination="Epd-dG-rEI" id="bD9-b8-Ch1"/>
                         <outlet property="tableView" destination="DTh-E2-KOO" id="OqM-Lf-QCm"/>

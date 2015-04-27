@@ -12,3 +12,4 @@
 #import "HBChannelItem.h"
 #import "HBUser.h"
 #import "HBAvatar.h"
+#import "HBAccessToken.h"
