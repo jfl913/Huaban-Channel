@@ -7,12 +7,10 @@ pod 'Mantle', '~> 1.5.4'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 pod 'Masonry'
 pod 'SVPullToRefresh', :git => 'https://github.com/jfl913/SVPullToRefresh'
-pod 'SVProgressHUD'
-pod 'Masonry'
+pod 'SSKeychain'
 
 end
 
 target 'Huaban-ChannelTests' do
 
 end
-

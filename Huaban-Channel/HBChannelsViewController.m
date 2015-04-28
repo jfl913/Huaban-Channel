@@ -12,7 +12,6 @@
 #import "HBChannelsViewCell.h"
 #import <Masonry.h>
 #import <SVPullToRefresh.h>
-#import "HRToastManager.h"
 #import "HBChannelItemsViewController.h"
 
 #define kHBChannelsPerPage 100
@@ -50,7 +49,7 @@ static NSString *const zeroFollowingCellReuseIdentifier = @"ZeroFollowingCell";
                                                                     [self.tableView reloadData];
                                                                 });
                                                             } failure:^(NSError *error) {
-                                                                [HRToastManager showErrorMessage:@"加载失败"];
+                                                                NSLog(@"error: %@", error);
                                                             }];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
