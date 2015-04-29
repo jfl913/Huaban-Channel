@@ -127,7 +127,6 @@ static NSString *const reuseCellIdentifier = @"HBChannelItemsViewCellID";
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"用户名";
-        textField.bounds = CGRectMake(textField.bounds.origin.x, textField.bounds.origin.y, textField.bounds.size.width, 44);
     }];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"密码";

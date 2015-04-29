@@ -19,6 +19,7 @@
 		01199D611AEE2E1F009CFB11 /* NSString+Base64Encode.m in Sources */ = {isa = PBXBuildFile; fileRef = 01199D601AEE2E1F009CFB11 /* NSString+Base64Encode.m */; };
 		011DBAA41AE4E3DE007C743D /* UITableView+JFLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 011DBAA31AE4E3DE007C743D /* UITableView+JFLayoutCell.m */; };
 		011E04BA1AA8361100805E65 /* JFWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 011E04B91AA8361100805E65 /* JFWebImageManager.m */; };
+		012C00591AEF847D00BD282D /* JFHTTPRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 012C00581AEF847D00BD282D /* JFHTTPRequestSerializer.m */; };
 		014061D61AE110EB00613409 /* HBChannelItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 014061D51AE110EB00613409 /* HBChannelItemsViewController.m */; };
 		014061D91AE111A800613409 /* HBChannelItemsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 014061D81AE111A800613409 /* HBChannelItemsViewCell.m */; };
 		0149334B1AA408980048A388 /* HBChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0149334A1AA408980048A388 /* HBChannel.m */; };
@@ -70,6 +71,8 @@
 		011DBAA31AE4E3DE007C743D /* UITableView+JFLayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+JFLayoutCell.m"; sourceTree = "<group>"; };
 		011E04B81AA8361100805E65 /* JFWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFWebImageManager.h; sourceTree = "<group>"; };
 		011E04B91AA8361100805E65 /* JFWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFWebImageManager.m; sourceTree = "<group>"; };
+		012C00571AEF847D00BD282D /* JFHTTPRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFHTTPRequestSerializer.h; sourceTree = "<group>"; };
+		012C00581AEF847D00BD282D /* JFHTTPRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFHTTPRequestSerializer.m; sourceTree = "<group>"; };
 		014061D41AE110EB00613409 /* HBChannelItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBChannelItemsViewController.h; sourceTree = "<group>"; };
 		014061D51AE110EB00613409 /* HBChannelItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBChannelItemsViewController.m; sourceTree = "<group>"; };
 		014061D71AE111A800613409 /* HBChannelItemsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBChannelItemsViewCell.h; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 			children = (
 				010F34C11AA44E17008140EB /* JFHTTPSessionManager.h */,
 				010F34C21AA44E17008140EB /* JFHTTPSessionManager.m */,
+				012C00571AEF847D00BD282D /* JFHTTPRequestSerializer.h */,
+				012C00581AEF847D00BD282D /* JFHTTPRequestSerializer.m */,
 			);
 			name = JFNetWorking;
 			sourceTree = "<group>";
@@ -430,6 +435,7 @@
 				017F89581AA58E90005A8C8D /* HBChannelsViewCell.m in Sources */,
 				016AB88E1AB28CDF00FEF653 /* JFImageCache.m in Sources */,
 				01E9B95D1AA48521000FE7D5 /* HBAPIManager.m in Sources */,
+				012C00591AEF847D00BD282D /* JFHTTPRequestSerializer.m in Sources */,
 				017F89551AA566C9005A8C8D /* HBChannelsViewController.m in Sources */,
 				01B9FC161AEE4003005201D5 /* HBAccessToken.m in Sources */,
 				01199D611AEE2E1F009CFB11 /* NSString+Base64Encode.m in Sources */,

@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JFHTTPRequestSerializer.h"
 
 @interface JFHTTPSessionManager : NSObject
 
 @property (nonatomic, strong) NSURL *baseURL;
+@property (nonatomic, strong) JFHTTPRequestSerializer *requestSerializer;
 
 - (instancetype)initWithBaseURL:(NSURL *)url;
-
-- (void)setClientID:(NSString *)clientID andClientSecret:(NSString *)clientSecret;
 
 - (NSURLSessionDataTask *)GET:(NSString *)URLString
                    parameters:(id)parameters

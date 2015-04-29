@@ -8,6 +8,7 @@
 
 #import "HBAPIManager.h"
 #import "HBChannelAPI.h"
+#import "NSString+Base64Encode.h"
 
 #define kHBAPIKey @"993743d208ae49288837"
 #define kHBAPISecret @"11cbe841e0bf42f9be0c8f6d3ee327ec"
@@ -25,7 +26,9 @@ typedef void(^JFFailureBlock)(NSURLSessionDataTask *task, NSError *error);
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         manager = [[HBAPIManager alloc] initWithBaseURL:[NSURL URLWithString:API_SERVER]];
-        [manager setClientID:kHBAPIKey andClientSecret:kHBAPISecret];
+        NSString *authInfo = [[NSString stringWithFormat:@"%@:%@", kHBAPIKey, kHBAPISecret] base64encode];
+        NSString *basicAuth = [NSString stringWithFormat:@"Basic %@", authInfo];
+        [manager.requestSerializer setValue:basicAuth forHTTPHeaderField:@"Authorization"];
     });
     
     return manager;

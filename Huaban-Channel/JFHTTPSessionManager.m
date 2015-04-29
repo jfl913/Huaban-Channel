@@ -7,13 +7,10 @@
 //
 
 #import "JFHTTPSessionManager.h"
-#import "NSString+Base64Encode.h"
 
 @interface JFHTTPSessionManager ()
 
 @property (nonatomic, strong) NSURLSession *session;
-@property (nonatomic, copy) NSString *clientID;
-@property (nonatomic, copy) NSString *clientSecret;
 
 @end
 
@@ -33,15 +30,10 @@
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     self.session = [NSURLSession sessionWithConfiguration:configuration];
+    self.requestSerializer = [JFHTTPRequestSerializer serializer];
     self.baseURL = url;
     
     return self;
-}
-
-- (void)setClientID:(NSString *)clientID andClientSecret:(NSString *)clientSecret
-{
-    self.clientID = clientID;
-    self.clientSecret = clientSecret;
 }
 
 - (NSURLSessionDataTask *)GET:(NSString *)URLString
@@ -63,16 +55,15 @@
                        success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                        failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure
 {
-    NSURLSessionDataTask *dataTask = [self dataTaskWithURLString:URLString
-                                                  bodyParameters:parameters
-                                                         success:success
-                                                         failure:failure];
+    NSURLSessionDataTask *dataTask = [self dataTaskWithHTTPMethod:@"POST"
+                                                        URLString:URLString
+                                                       parameters:parameters
+                                                          success:success
+                                                          failure:failure];
     [dataTask resume];
     return dataTask;
 }
 
-
-// 暂时只实现了GET方法
 - (NSURLSessionDataTask *)dataTaskWithHTTPMethod:(NSString *)method
                                        URLString:(NSString *)URLString
                                       parameters:(NSDictionary *)parameters
@@ -80,43 +71,12 @@
                                          failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure
 {
     NSURL *url = [NSURL URLWithString:URLString relativeToURL:self.baseURL];
-    NSString *completeURLString = [[url absoluteString] stringByAppendingFormat:@"?%@", [self stringFromQueryParameters:parameters]];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:completeURLString]];
-    request.HTTPMethod = method;
-    __block NSURLSessionDataTask *dataTask = nil;
-    dataTask = [self.session dataTaskWithRequest:request
-                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                         if (error) {
-                                                             if (failure) {
-                                                                 failure(dataTask, error);
-                                                             }
-                                                         }else{
-                                                             if (success) {
-                                                                 id JSONObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-                                                                 success(dataTask, JSONObject);
-                                                             }
-                                                         }
-                                                         
-                                                         
-    }];
-    return dataTask;
-}
-
-- (NSURLSessionDataTask *)dataTaskWithURLString:(NSString *)URLString
-                                     bodyParameters:(NSDictionary *)parameters
-                                        success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
-                                        failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure
-{
-    NSURL *url = [NSURL URLWithString:URLString relativeToURL:self.baseURL];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    request.HTTPMethod = @"POST";
+    NSMutableURLRequest *mutableURLRequest = [self.requestSerializer requestWithMethod:method
+                                                                             URLString:url.absoluteString
+                                                                            parameters:parameters];
     
-    NSString *authInfo = [[NSString stringWithFormat:@"%@:%@", self.clientID, self.clientSecret] base64encode];
-    NSString *basicAuth = [NSString stringWithFormat:@"Basic %@", authInfo];
-    [request addValue:basicAuth forHTTPHeaderField:@"Authorization"];
-    request.HTTPBody = [[self stringFromQueryParameters:parameters] dataUsingEncoding:NSUTF8StringEncoding];
     __block NSURLSessionDataTask *dataTask = nil;
-    dataTask = [self.session dataTaskWithRequest:request
+    dataTask = [self.session dataTaskWithRequest:mutableURLRequest
                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                    if (error) {
                                        if (failure) {
