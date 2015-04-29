@@ -26,8 +26,10 @@ typedef void(^JFFailureBlock)(NSURLSessionDataTask *task, NSError *error);
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         manager = [[HBAPIManager alloc] initWithBaseURL:[NSURL URLWithString:API_SERVER]];
-        NSString *authInfo = [[NSString stringWithFormat:@"%@:%@", kHBAPIKey, kHBAPISecret] base64encode];
-        NSString *basicAuth = [NSString stringWithFormat:@"Basic %@", authInfo];
+        NSString *authInfo = [NSString stringWithFormat:@"%@:%@", kHBAPIKey, kHBAPISecret];
+        NSData *data = [authInfo dataUsingEncoding:NSUTF8StringEncoding];
+        NSString *base64String = [data base64EncodedStringWithOptions:0];
+        NSString *basicAuth = [NSString stringWithFormat:@"Basic %@", base64String];
         [manager.requestSerializer setValue:basicAuth forHTTPHeaderField:@"Authorization"];
     });
     
