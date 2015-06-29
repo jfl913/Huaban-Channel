@@ -13,8 +13,11 @@
 #import "UITableView+JFLayoutCell.h"
 #import <SVPullToRefresh.h>
 #import <Masonry.h>
+#import "HBAccessToken.h"
+#import <SSKeychain.h>
 
 static NSString *const reuseCellIdentifier = @"HBChannelItemsViewCellID";
+static NSString *const userDataPath = @"api.user.data";
 
 #define kHBChannelItemsPerPage 20
 
@@ -120,7 +123,33 @@ static NSString *const reuseCellIdentifier = @"HBChannelItemsViewCellID";
                                                          }];
 
 }
+
 - (IBAction)followItemTapped:(id)sender
+{
+    [self loginHuaBan];
+}
+
+- (void)setupTableFooterView
+{
+    // 一开始就要设置好view的frame，如果用下面的autolayout来设置view的width，height，tableFooterView只有往上拖才会显示，一松手就又弹回去隐藏住了
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
+    view.backgroundColor = [UIColor lightGrayColor];
+    
+    UILabel *label = [UILabel new];
+    label.text = @"没有更多了";
+    label.textColor = [UIColor blackColor];
+    label.font = [UIFont systemFontOfSize:12];
+    [view addSubview:label];
+    
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(view.mas_centerX);
+        make.centerY.equalTo(view.mas_centerY);
+    }];
+    
+    self.tableView.tableFooterView = view;
+}
+
+- (void)loginHuaBan
 {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"花瓣"
                                                                              message:@"登录"
@@ -146,34 +175,32 @@ static NSString *const reuseCellIdentifier = @"HBChannelItemsViewCellID";
 {
     [[HBAPIManager sharedManager] loginWithUsername:username
                                            password:password
-                                            success:^(id responseObject) {
-                                                NSLog(@"login: %@", responseObject);
+                                            success:^(HBAccessToken *token) {
+                                                [self setUpAccessToken:token];
+                                                [self fetchUserInfo];
                                             } failure:^(NSError *error) {
                                                 NSLog(@"error: %@", error);
                                             }];
-
+    
 }
 
-- (void)setupTableFooterView
+- (void)setUpAccessToken:(HBAccessToken *)token
 {
-    // 一开始就要设置好view的frame，如果用下面的autolayout来设置view的width，height，tableFooterView只有往上拖才会显示，一松手就又弹回去隐藏住了
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
-    view.backgroundColor = [UIColor lightGrayColor];
-    
-    UILabel *label = [UILabel new];
-    label.text = @"没有更多了";
-    label.textColor = [UIColor blackColor];
-    label.font = [UIFont systemFontOfSize:12];
-    [view addSubview:label];
-    
-    [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(view.mas_centerX);
-        make.centerY.equalTo(view.mas_centerY);
-    }];
-    
-    self.tableView.tableFooterView = view;
+    [[HBAPIManager sharedManager].requestSerializer setValue:[NSString stringWithFormat:@"bearer %@", token.accessToken] forHTTPHeaderField:@"Authorization"];
+    [SSKeychain setPassword:token.accessToken forService:@"HuabBan" account:@"accessToken"];
+    [SSKeychain setPassword:token.refreshToken forService:@"HuaBan" account:@"refreshToken"];
 }
 
+- (void)fetchUserInfo
+{
+    [[HBAPIManager sharedManager] fetchUserInfoWithSuccess:^(HBUser *user) {
+        NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+        NSString *userPath = [documentsDirectory stringByAppendingPathComponent:userDataPath];
+        [NSKeyedArchiver archiveRootObject:user toFile:userPath];
+    } failure:^(NSError *error) {
+        NSLog(@"error: %@", error);
+    }];
+}
 
 #pragma mark - UITableViewDataSource
 

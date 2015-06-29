@@ -37,3 +37,10 @@
                   failure:(void (^)(NSError *error))failure;
 
 @end
+
+@interface HBAPIManager (User)
+
+- (void)fetchUserInfoWithSuccess:(void (^)(id responseObject))success
+                         failure:(void (^)(NSError *error))failure;
+
+@end

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <PonyDebugger.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +18,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+#ifdef DEBUG
+    PDDebugger *debugger = [PDDebugger defaultInstance];
+    [debugger connectToURL:[NSURL URLWithString:@"ws://localhost:9000/device"]];
+    [debugger enableNetworkTrafficDebugging];
+    [debugger forwardAllNetworkTraffic];
+    [debugger enableRemoteLogging];
+#endif
+    
     return YES;
 }
 

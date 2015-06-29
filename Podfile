@@ -8,6 +8,7 @@ pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 pod 'Masonry'
 pod 'SVPullToRefresh', :git => 'https://github.com/jfl913/SVPullToRefresh'
 pod 'SSKeychain'
+pod 'PonyDebugger', '~> 0.4.3'
 
 end
 

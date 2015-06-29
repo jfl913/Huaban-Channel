@@ -8,7 +8,6 @@
 
 #import "HBAPIManager.h"
 #import "HBChannelAPI.h"
-#import "NSString+Base64Encode.h"
 
 #define kHBAPIKey @"993743d208ae49288837"
 #define kHBAPISecret @"11cbe841e0bf42f9be0c8f6d3ee327ec"
@@ -148,6 +147,22 @@ typedef void(^JFFailureBlock)(NSURLSessionDataTask *task, NSError *error);
                  parameters:parameters
                 resultClass:[HBAccessToken class]
                     listKey:nil
+                    success:success
+                    failure:failure];
+}
+
+@end
+
+@implementation HBAPIManager (User)
+
+- (void)fetchUserInfoWithSuccess:(void (^)(id responseObject))success
+                         failure:(void (^)(NSError *error))failure
+{
+    [self requestWithMethod:@"GET"
+               relativePath:@"/users/me"
+                 parameters:nil
+                resultClass:[HBUser class]
+                    listKey:@"user"
                     success:success
                     failure:failure];
 }
