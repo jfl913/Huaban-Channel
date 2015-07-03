@@ -16,6 +16,7 @@
 		010F34C01AA414AF008140EB /* HBFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F34BF1AA414AF008140EB /* HBFile.m */; };
 		010F34C31AA44E17008140EB /* JFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 010F34C21AA44E17008140EB /* JFHTTPSessionManager.m */; };
 		0116A7351B469079006122D5 /* IBDesignableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0116A7341B469079006122D5 /* IBDesignableImageView.m */; };
+		0116A73B1B469983006122D5 /* IBDesignableOnePixelConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 0116A73A1B469983006122D5 /* IBDesignableOnePixelConstant.m */; };
 		01199D5E1AEDD447009CFB11 /* NSDate+JFToNow.m in Sources */ = {isa = PBXBuildFile; fileRef = 01199D5D1AEDD447009CFB11 /* NSDate+JFToNow.m */; };
 		011DBAA41AE4E3DE007C743D /* UITableView+JFLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 011DBAA31AE4E3DE007C743D /* UITableView+JFLayoutCell.m */; };
 		011E04BA1AA8361100805E65 /* JFWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 011E04B91AA8361100805E65 /* JFWebImageManager.m */; };
@@ -65,6 +66,8 @@
 		010F34C21AA44E17008140EB /* JFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFHTTPSessionManager.m; sourceTree = "<group>"; };
 		0116A7331B469079006122D5 /* IBDesignableImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBDesignableImageView.h; sourceTree = "<group>"; };
 		0116A7341B469079006122D5 /* IBDesignableImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBDesignableImageView.m; sourceTree = "<group>"; };
+		0116A7391B469983006122D5 /* IBDesignableOnePixelConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBDesignableOnePixelConstant.h; sourceTree = "<group>"; };
+		0116A73A1B469983006122D5 /* IBDesignableOnePixelConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBDesignableOnePixelConstant.m; sourceTree = "<group>"; };
 		01199D5C1AEDD447009CFB11 /* NSDate+JFToNow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JFToNow.h"; sourceTree = "<group>"; };
 		01199D5D1AEDD447009CFB11 /* NSDate+JFToNow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JFToNow.m"; sourceTree = "<group>"; };
 		011DBAA21AE4E3DE007C743D /* UITableView+JFLayoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+JFLayoutCell.h"; sourceTree = "<group>"; };
@@ -232,6 +235,8 @@
 			children = (
 				0116A7331B469079006122D5 /* IBDesignableImageView.h */,
 				0116A7341B469079006122D5 /* IBDesignableImageView.m */,
+				0116A7391B469983006122D5 /* IBDesignableOnePixelConstant.h */,
+				0116A73A1B469983006122D5 /* IBDesignableOnePixelConstant.m */,
 			);
 			name = SubClass;
 			sourceTree = "<group>";
@@ -448,6 +453,7 @@
 				01B9FC161AEE4003005201D5 /* HBAccessToken.m in Sources */,
 				01FEE0AD1ADCF0E700B72A72 /* HBUser.m in Sources */,
 				0149334B1AA408980048A388 /* HBChannel.m in Sources */,
+				0116A73B1B469983006122D5 /* IBDesignableOnePixelConstant.m in Sources */,
 				0116A7351B469079006122D5 /* IBDesignableImageView.m in Sources */,
 				010F34C01AA414AF008140EB /* HBFile.m in Sources */,
 				01199D5E1AEDD447009CFB11 /* NSDate+JFToNow.m in Sources */,
