@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "98975C2973A70DFBC76BA48E75E8F8988C24F79C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "98975C2973A70DFBC76BA48E75E8F8988C24F79C" : 0,
+    "CB7EF7FC421696CDBF56716D035B1E29A97712E9" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B2F87D9D-48D1-4AB3-B8CE-130C7DC40857",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "98975C2973A70DFBC76BA48E75E8F8988C24F79C" : "Huaban-Channel",
+    "CB7EF7FC421696CDBF56716D035B1E29A97712E9" : "her-ios"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Huaban-Channel",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Huaban-Channel.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/gitlab.widget-inc.com:65422\/junfeng.li\/Huaban-Channel.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "98975C2973A70DFBC76BA48E75E8F8988C24F79C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/gitlab.widget-inc.com:65422\/her\/her-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CB7EF7FC421696CDBF56716D035B1E29A97712E9"
+    }
+  ]
+}

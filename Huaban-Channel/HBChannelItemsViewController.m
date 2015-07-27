@@ -67,10 +67,6 @@ static NSString *const userDataPath = @"api.user.data";
     [self.tableView addInfiniteScrollingWithActionHandler:^{
         [weakSelf loadMore];
     }];
-    
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -249,6 +245,22 @@ static NSString *const userDataPath = @"api.user.data";
     CGFloat rowHeight = [sizingCell heightForRow];
     return rowHeight + 1.0 / [UIScreen mainScreen].scale;
 }
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+       [tableView setSeparatorInset:UIEdgeInsetsZero];
+   }
+
+    if ([tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
 
 /*
 #pragma mark - Navigation

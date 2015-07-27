@@ -41,8 +41,6 @@
 - (void)awakeFromNib
 {
     // Initialization code
-    self.contentView.layer.cornerRadius = 3;
-    self.contentView.layer.masksToBounds = YES;
 }
 
 - (void)updateCell
@@ -89,14 +87,7 @@
 - (CGFloat)heightForRow
 {
     // 之所以加上kSpace，是对后面的contentView的frame调整时，布局合理
-    return (self.bottomView.frame.origin.y + self.bottomView.frame.size.height + kSpace);
-}
-
-- (void)layoutSubviews
-{
-    self.contentView.frame = CGRectInset(self.bounds, kSpace, kSpace);
-    CGRect frame = self.contentView.frame;
-    self.contentView.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height + kSpace);
+    return (self.bottomView.frame.origin.y + self.bottomView.frame.size.height);
 }
 
 @end
